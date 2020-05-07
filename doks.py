@@ -49,7 +49,7 @@ def doks(path):
         print(header)
         print()
 
-    def is_class(value):
+    def is_class_UNUSED(value):
         while True:
             wrapped = getattr(value, '__wrapped__', None)
             if not wrapped:
@@ -67,7 +67,7 @@ def doks(path):
             if not name.startswith('_') or name.startswith('__'):
                 value = getattr(parent, name)
                 new_path = '%s.%s' % (module_path, name)
-                if is_class(value):
+                if isinstance(value, type):
                     header('Class ``%s``' % new_path, '=')
                     indent(get_doc(value))
                     print()
