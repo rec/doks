@@ -38,9 +38,6 @@ def doks(path):
                 print('    ', end='')
             print(line)
 
-    def OLD_print_name(name):
-        header('``%s``' % name)
-
     def header(line, char='-'):
         header = char * len(line)
         if char in '*#':
@@ -49,15 +46,14 @@ def doks(path):
         print(header)
         print()
 
-    def is_class_UNUSED(value):
-        while True:
-            wrapped = getattr(value, '__wrapped__', None)
-            if not wrapped:
-                return isinstance(value, type)
-            value = wrapped
-
     def get_doc(s):
         lines = (s.__doc__ or '').splitlines()
+        while lines and not lines[-1].strip():
+            lines.pop()
+
+        while lines and not lines[0].strip():
+            lines.pop(0)
+
         prefix = os.path.commonprefix(lines)
         blanks = len(prefix) - len(prefix.lstrip())
         return [i[blanks:] for i in lines]
@@ -82,6 +78,7 @@ def doks(path):
     module = impall.import_file(path)
     for line in get_doc(module):
         print(line)
+    print()
     header('API', '*')
     print_children(module, module.__all__, module.__name__)
 
