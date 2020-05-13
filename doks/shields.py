@@ -14,12 +14,6 @@ def shield_data():
 
 
 def find_shield(shield_key):
-    # if isinstance(config, str):
-    #     name, config = config, {}
-    # else:
-    #     config = dict(config)
-    #     name = config.pop('name')
-
     key, *rest = shield_key.lower().split('.')
 
     for source, items in shield_data().items():
@@ -43,13 +37,13 @@ def find_shield(shield_key):
     raise ValueError('Bad key ' + shield_key)
 
 
-def _shield_url(url, source, style, kwargs):
+def _shield_url(url, source, style, variables):
     parts = url.split('/')
     missing_parts = []
     for i, part in enumerate(parts):
         if part.startswith(':'):
             part = part[1:]
-            replacement = kwargs.get(part)
+            replacement = variables.get(part)
             if replacement:
                 parts[i] = replacement
             else:
@@ -64,6 +58,6 @@ def _shield_url(url, source, style, kwargs):
     return base_url
 
 
-def shield_url(key, style=None, **kwargs):
+def shield_url(key, variables, style=None):
     source, url, name, category = find_shield(key)
-    return _shield_url(url, source, style, kwargs)
+    return _shield_url(url, source, style, variables)

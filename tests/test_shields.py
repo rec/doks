@@ -49,22 +49,23 @@ class TestFindShields(unittest.TestCase):
         assert actual == expected
 
 
+_REPS = {'user': 'rec', 'repo': 'doks'}
+_STYLE = {'color': 'FF00FF', 'label': 'blah', 'style': 'plastic'}
+
+
 class TestShieldURL(unittest.TestCase):
     def test_github2(self):
-        actual = shields.shield_url(
-            'github.last-commit', user='rec', repo='doks'
-        )
+        actual = shields.shield_url('github.last-commit', _REPS)
         expected = 'https://shields.io/github/last-commit/rec/doks'
         assert actual == expected
 
     def test_travis(self):
-        actual = shields.shield_url('travis', user='rec', repo='doks')
+        actual = shields.shield_url('travis', _REPS)
         expected = 'https://shields.io/travis/rec/doks'
         assert actual == expected
 
     def test_travis2(self):
-        style = {'color': 'FF00FF', 'label': 'blah', 'style': 'plastic'}
-        actual = shields.shield_url('travis', style, user='rec', repo='doks')
+        actual = shields.shield_url('travis', _REPS, _STYLE)
         expected = (
             'https://shields.io/travis/rec/doks'
             '?color=FF00FF&label=blah&style=plastic'
