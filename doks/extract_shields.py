@@ -45,11 +45,11 @@ def re_key(shields):
     result = {}
 
     for category, items in shields.items():
-        for name, item in items.items():
+        for alt, item in items.items():
             blank, root, *rest = item.split('/', maxsplit=2)
             assert not blank, blank
             url = rest[0] if rest else ''
-            result.setdefault(root, []).append([url, name, category])
+            result.setdefault(root, []).append([alt, url, category])
 
     return result
 
@@ -63,8 +63,8 @@ def print_re_key(shields):
             else:
                 print()
             print('%s:' % root)
-            for url, name, category in sorted(items):
-                print("- ['%s', '%s', '%s']" % (url, name, category))
+            for alt, url, category in sorted(items):
+                print("- ['%s', '%s', '%s']" % (alt, url, category))
 
 
 def main():

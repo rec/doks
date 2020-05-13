@@ -9,6 +9,8 @@ import inspect
 import os
 import sys
 
+# from . import shields
+
 __all__ = 'Test', 'doks'
 
 
@@ -64,6 +66,7 @@ def doks(path):
             if not name.startswith('_') or name.startswith('__'):
                 value = getattr(parent, name)
                 new_path = '%s.%s' % (module_path, name)
+
                 if isinstance(value, type):
                     header('Class ``%s``' % new_path, '=')
                     indent(get_doc(value))
