@@ -4,7 +4,7 @@ import requests
 import yaml
 
 SHIELDS_URL = 'https://shields.io'
-FINAL_FILE = 'shields.yml'
+FILE = 'shields.yml'
 INTERMEDIATE_FILE = 'shields-inter.yml'
 
 
@@ -55,7 +55,7 @@ def re_key(shields):
 
 
 def print_re_key(shields):
-    with safer.printer(FINAL_FILE) as print:
+    with safer.printer(FILE) as print:
         first = True
         for root, items in sorted(shields.items()):
             if first:

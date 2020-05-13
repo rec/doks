@@ -9,7 +9,7 @@ import inspect
 import os
 import sys
 
-__all__ = 'Test', 'doks',
+__all__ = 'Test', 'doks'
 
 
 class Test:
@@ -32,6 +32,7 @@ def doks(path):
     ARGUMENTS
       path: path to the Python file or module.
     """
+
     def indent(lines):
         for line in lines:
             if line.strip():
