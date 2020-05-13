@@ -21,7 +21,7 @@ def get_categories():
 
 def get_shield_template(category):
     for row in get_soup(category).find('table').find('tbody').find_all('tr'):
-        yield row.find('th').text, row.find('code').text
+        yield row.find('th').text.rstrip(':'), row.find('code').text
 
 
 def scrape_all_shields():
