@@ -4,6 +4,7 @@
 
 """
 from . import shields
+from . import variables
 import datetime
 import impall
 import inspect
@@ -67,15 +68,8 @@ def doks(path):
     module = impall.import_file(path)
     module_doc = get_doc(module)
 
-    variables = {
-        'user': 'rec',
-        'repo': 'doks',
-        'vcsType': 'git',
-        'vcsName': 'github',
-        'packageName': 'doks',
-    }
-
-    for line in shields.add_shields(module_doc, variables):
+    def_vars = variables.default_variables(path)
+    for line in shields.add_shields(module_doc, def_vars):
         print(line)
     print()
     header('API', '*')

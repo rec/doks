@@ -49,7 +49,7 @@ class TestFindShields(unittest.TestCase):
         assert actual == expected
 
     def test_travis(self):
-        actual = shields.find_shield('travis..org')
+        actual = shields.find_shield('travis.org')
         expected = ['travis', ':user/:repo', 'Travis (.org)', 'build']
         assert actual == expected
 
@@ -57,9 +57,9 @@ class TestFindShields(unittest.TestCase):
 _VARS = {
     'user': 'rec',
     'repo': 'doks',
-    'vcsType': 'git',
-    'vcsName': 'github',
-    'packageName': 'doks',
+    'vcstype': 'git',
+    'vcsname': 'github',
+    'packagename': 'doks',
 }
 _STYLE = {'color': 'FF00FF', 'label': 'blah', 'style': 'plastic'}
 
@@ -71,12 +71,12 @@ class TestShieldURL(unittest.TestCase):
         assert actual == (expected, 'GitHub last commit')
 
     def test_travis(self):
-        actual = shields.shield_url('travis..org', _VARS)
+        actual = shields.shield_url('travis.org', _VARS)
         expected = ('https://shields.io/travis/rec/doks', 'Travis (.org)')
         assert actual == expected
 
     def test_travis2(self):
-        actual = shields.shield_url('travis..org', _VARS, _STYLE)[0]
+        actual = shields.shield_url('travis.org', _VARS, _STYLE)[0]
         expected = (
             'https://shields.io/travis/rec/doks'
             '?color=FF00FF&label=blah&style=plastic'
@@ -98,7 +98,7 @@ LINES = """
 
 .. doks-shields::
 
-   travis..org codecov github.release pypi.pyversions github.top/languages
+   travis.org codecov github.release pypi.pyversions github.top/languages
    codefactor pypi.l github.code-size
 
 No more partial writes or corruption! For file streams, sockets or

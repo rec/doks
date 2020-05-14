@@ -1,6 +1,7 @@
 import shlex
 import yaml
 from .extract_shields import FILE
+from .variables import substitute
 
 _SHIELD_DATA = {}
 _URL_ROOT = 'https://shields.io'
@@ -14,7 +15,7 @@ def shield_data():
     return _SHIELD_DATA
 
 
-def find_shield(shield_key):
+def _find(shield_key):
     key, *rest = shield_key.lower().split('.')
 
     for source, items in shield_data().items():
@@ -40,33 +41,23 @@ def find_shield(shield_key):
 
             if not r2:
                 return result
-            k3, = r2
+            (k3,) = r2
             if category.startswith(k3):
                 return result
 
-    raise ValueError('Bad key ' + shield_key)
+
+def find_shield(key):
+    shield = _find(key) or _find(key.replace('.', '..', 1))
+    if not shield:
+        raise ValueError('Bad key ' + key)
+    return shield
 
 
 def _shield_url(key, source, url, style, variables):
     url = url.split('?', maxsplit=1)[0]
-    parts = url.split('/')
-    missing_parts = []
-    for i, part in enumerate(parts):
-        if part.startswith(':'):
-            optional = part.endswith('*')
-            if optional:
-                part = part[:-1]
-            part = part[1:]
-            replacement = variables.get(part)
-            if replacement:
-                parts[i] = replacement
-            elif not optional:
-                missing_parts.append(part)
-    if missing_parts:
-        parts = ', '.join(missing_parts)
-        raise ValueError('Missing variables %s in %s: %s' % (parts, url, key))
+    url = substitute(variables, url)
 
-    base_url = '/'.join([_URL_ROOT, source] + parts)
+    base_url = '/'.join([_URL_ROOT, source, url])
     if style:
         s = ('%s=%s' % (k, v) for k, v in sorted(style.items()))
         base_url += '?' + '&'.join(s)
