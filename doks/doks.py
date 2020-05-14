@@ -44,11 +44,6 @@ def doks(path):
 
         prefix = os.path.commonprefix([i for i in lines if i.strip()])
         blanks = len(prefix) - len(prefix.lstrip())
-        import sys
-
-        name = getattr(s, '__name__', '(none)')
-        print('BLANKS', blanks, name, file=sys.stderr)
-        print(*lines, sep='\n', file=sys.stderr)
         return [i[blanks:] for i in lines]
 
     def print_children(parent, names, module_path):

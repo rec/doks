@@ -1,768 +1,768 @@
 :tenant.myget:
-- ['MyGet tenant', ':feed/dt/:packageName', 'downloads']
-- ['MyGet tenant', ':feed/v/:packageName', 'version']
+- [':feed/dt/:packageName', 'MyGet tenant', 'downloads']
+- [':feed/v/:packageName', 'MyGet tenant', 'version']
 
 amo:
-- ['Mozilla Add-on', 'stars/:addonId', 'rating']
-- ['Mozilla Add-on', 'users/:addonId', 'downloads']
-- ['Mozilla Add-on', 'v/:addonId', 'version']
+- ['stars/:addonId', 'Mozilla Add-on', 'rating']
+- ['users/:addonId', 'Mozilla Add-on', 'downloads']
+- ['v/:addonId', 'Mozilla Add-on', 'version']
 
 ansible:
-- ['Ansible Quality Score', 'quality/:projectId', 'analysis']
-- ['Ansible Role', 'role/:roleId', 'other']
-- ['Ansible Role', 'role/d/:roleId', 'downloads']
+- ['quality/:projectId', 'Ansible Quality Score', 'analysis']
+- ['role/:roleId', 'Ansible Role', 'other']
+- ['role/d/:roleId', 'Ansible Role', 'downloads']
 
 apm:
-- ['APM', 'dm/:packageName', 'downloads']
-- ['APM', 'l/:packageName', 'license']
-- ['APM', 'v/:packageName', 'version']
+- ['dm/:packageName', 'APM', 'downloads']
+- ['l/:packageName', 'APM', 'license']
+- ['v/:packageName', 'APM', 'version']
 
 appveyor:
-- ['AppVeyor', 'build/:user/:repo', 'build']
-- ['AppVeyor Job', 'job/build/:user/:repo/:job', 'build']
-- ['AppVeyor Job branch', 'job/build/:user/:repo/:job/:branch', 'build']
-- ['AppVeyor branch', 'build/:user/:repo/:branch', 'build']
-- ['AppVeyor tests', 'tests/:user/:repo', 'build']
-- ['AppVeyor tests (branch)', 'tests/:user/:repo/:branch', 'build']
-- ['AppVeyor tests (compact)', 'tests/:user/:repo?compact_message', 'build']
-- ['AppVeyor tests with custom labels', 'tests/:user/:repo?failed_label=bad&passed_label=good&skipped_label=n%2Fa', 'build']
+- ['build/:user/:repo', 'AppVeyor', 'build']
+- ['job/build/:user/:repo/:job', 'AppVeyor Job', 'build']
+- ['job/build/:user/:repo/:job/:branch', 'AppVeyor Job branch', 'build']
+- ['build/:user/:repo/:branch', 'AppVeyor branch', 'build']
+- ['tests/:user/:repo', 'AppVeyor tests', 'build']
+- ['tests/:user/:repo/:branch', 'AppVeyor tests (branch)', 'build']
+- ['tests/:user/:repo?compact_message', 'AppVeyor tests (compact)', 'build']
+- ['tests/:user/:repo?failed_label=bad&passed_label=good&skipped_label=n%2Fa', 'AppVeyor tests with custom labels', 'build']
 
 archlinux:
-- ['Arch Linux package', 'v/:repository/:architecture/:packageName', 'version']
+- ['v/:repository/:architecture/:packageName', 'Arch Linux package', 'version']
 
 aur:
-- ['AUR last modified', 'last-modified/:packageName', 'activity']
-- ['AUR license', 'license/:packageName', 'license']
-- ['AUR maintainer', 'maintainer/:packageName', 'other']
-- ['AUR version', 'version/:packageName', 'version']
-- ['AUR votes', 'votes/:packageName', 'rating']
+- ['last-modified/:packageName', 'AUR last modified', 'activity']
+- ['license/:packageName', 'AUR license', 'license']
+- ['maintainer/:packageName', 'AUR maintainer', 'other']
+- ['version/:packageName', 'AUR version', 'version']
+- ['votes/:packageName', 'AUR votes', 'rating']
 
 azure-devops:
-- ['Azure DevOps builds', 'build/:organization/:projectId/:definitionId', 'build']
-- ['Azure DevOps builds (branch)', 'build/:organization/:projectId/:definitionId/:branch', 'build']
-- ['Azure DevOps builds (job)', 'build/:organization/:projectId/:definitionId/:branch*?job=Successful%20Job&stage=Successful%20Stage', 'build']
-- ['Azure DevOps builds (stage)', 'build/:organization/:projectId/:definitionId/:branch*?stage=Successful%20Stage', 'build']
-- ['Azure DevOps coverage', 'coverage/:organization/:project/:definitionId', 'coverage']
-- ['Azure DevOps coverage (branch)', 'coverage/:organization/:project/:definitionId/:branch', 'coverage']
-- ['Azure DevOps releases', 'release/:organization/:projectId/:definitionId/:environmentId', 'build']
-- ['Azure DevOps tests', 'tests/:organization/:project/:definitionId', 'build']
-- ['Azure DevOps tests (branch)', 'tests/:organization/:project/:definitionId/:branch', 'build']
-- ['Azure DevOps tests (compact)', 'tests/:organization/:project/:definitionId?compact_message', 'build']
-- ['Azure DevOps tests with custom labels', 'tests/:organization/:project/:definitionId?failed_label=bad&passed_label=good&skipped_label=n%2Fa', 'build']
+- ['build/:organization/:projectId/:definitionId', 'Azure DevOps builds', 'build']
+- ['build/:organization/:projectId/:definitionId/:branch', 'Azure DevOps builds (branch)', 'build']
+- ['build/:organization/:projectId/:definitionId/:branch*?job=Successful%20Job&stage=Successful%20Stage', 'Azure DevOps builds (job)', 'build']
+- ['build/:organization/:projectId/:definitionId/:branch*?stage=Successful%20Stage', 'Azure DevOps builds (stage)', 'build']
+- ['coverage/:organization/:project/:definitionId', 'Azure DevOps coverage', 'coverage']
+- ['coverage/:organization/:project/:definitionId/:branch', 'Azure DevOps coverage (branch)', 'coverage']
+- ['release/:organization/:projectId/:definitionId/:environmentId', 'Azure DevOps releases', 'build']
+- ['tests/:organization/:project/:definitionId', 'Azure DevOps tests', 'build']
+- ['tests/:organization/:project/:definitionId/:branch', 'Azure DevOps tests (branch)', 'build']
+- ['tests/:organization/:project/:definitionId?compact_message', 'Azure DevOps tests (compact)', 'build']
+- ['tests/:organization/:project/:definitionId?failed_label=bad&passed_label=good&skipped_label=n%2Fa', 'Azure DevOps tests with custom labels', 'build']
 
 beerpay:
-- ['Beerpay', ':user/:project', 'funding']
+- [':user/:project', 'Beerpay', 'funding']
 
 bintray:
-- ['Bintray', 'v/:subject/:repo/:packageName', 'version']
+- ['v/:subject/:repo/:packageName', 'Bintray', 'version']
 
 bit:
-- ['bit', 'collection/total-components/:owner/:collection', 'other']
+- ['collection/total-components/:owner/:collection', 'bit', 'other']
 
 bitbucket:
-- ['Bitbucket Pipelines', 'pipelines/:user/:repo', 'build']
-- ['Bitbucket Pipelines branch', 'pipelines/:user/:repo/:branch', 'build']
-- ['Bitbucket Server open pull requests', 'pr/:user/:repo?server=https%3A%2F%2Fbitbucket.mydomain.net', 'issue-tracking']
-- ['Bitbucket open issues', 'issues/:user/:repo', 'issue-tracking']
-- ['Bitbucket open pull requests', 'pr/:user/:repo', 'issue-tracking']
+- ['pipelines/:user/:repo', 'Bitbucket Pipelines', 'build']
+- ['pipelines/:user/:repo/:branch', 'Bitbucket Pipelines branch', 'build']
+- ['pr/:user/:repo?server=https%3A%2F%2Fbitbucket.mydomain.net', 'Bitbucket Server open pull requests', 'issue-tracking']
+- ['issues/:user/:repo', 'Bitbucket open issues', 'issue-tracking']
+- ['pr/:user/:repo', 'Bitbucket open pull requests', 'issue-tracking']
 
 bitrise:
-- ['Bitrise', ':appId/:branch??token=GCIdEzacE4GW32jLVrZb7A', 'build']
+- [':appId/:branch??token=GCIdEzacE4GW32jLVrZb7A', 'Bitrise', 'build']
 
 bountysource:
-- ['Bountysource', 'team/:team/activity', 'funding']
+- ['team/:team/activity', 'Bountysource', 'funding']
 
 bower:
-- ['Bower', 'l/:packageName', 'license']
-- ['Bower Version', 'v/:packageName', 'version']
-- ['Bower Version (including pre-releases)', 'v/:packageName?include_prereleases', 'version']
+- ['l/:packageName', 'Bower', 'license']
+- ['v/:packageName', 'Bower Version', 'version']
+- ['v/:packageName?include_prereleases', 'Bower Version (including pre-releases)', 'version']
 
 bstats:
-- ['bStats Players', 'players/:pluginid', 'other']
-- ['bStats Servers', 'servers/:pluginid', 'other']
+- ['players/:pluginid', 'bStats Players', 'other']
+- ['servers/:pluginid', 'bStats Servers', 'other']
 
 bugzilla:
-- ['Bugzilla bug status (Mozilla)', ':bugNumber', 'issue-tracking']
-- ['Bugzilla bug status (non-Mozilla)', ':bugNumber?baseUrl=https%3A%2F%2Fbugs.eclipse.org%2Fbugs', 'issue-tracking']
+- [':bugNumber', 'Bugzilla bug status (Mozilla)', 'issue-tracking']
+- [':bugNumber?baseUrl=https%3A%2F%2Fbugs.eclipse.org%2Fbugs', 'Bugzilla bug status (non-Mozilla)', 'issue-tracking']
 
 buildkite:
-- ['Buildkite', ':identifier', 'build']
-- ['Buildkite (branch)', ':identifier/:branch', 'build']
+- [':identifier', 'Buildkite', 'build']
+- [':identifier/:branch', 'Buildkite (branch)', 'build']
 
 bundlephobia:
-- ['npm bundle size', ':format/:packageName', 'size']
-- ['npm bundle size (scoped version)', ':format/:scope/:packageName/:version', 'size']
-- ['npm bundle size (scoped)', ':format/:scope/:packageName', 'size']
-- ['npm bundle size (version)', ':format/:packageName/:version', 'size']
+- [':format/:packageName', 'npm bundle size', 'size']
+- [':format/:scope/:packageName/:version', 'npm bundle size (scoped version)', 'size']
+- [':format/:scope/:packageName', 'npm bundle size (scoped)', 'size']
+- [':format/:packageName/:version', 'npm bundle size (version)', 'size']
 
 cdnjs:
-- ['Cdnjs', 'v/:library', 'version']
+- ['v/:library', 'Cdnjs', 'version']
 
 chocolatey:
-- ['Chocolatey', 'dt/:packageName', 'downloads']
-- ['Chocolatey Version', 'v/:packageName', 'version']
-- ['Chocolatey Version (including pre-releases)', 'v/:packageName?include_prereleases', 'version']
+- ['dt/:packageName', 'Chocolatey', 'downloads']
+- ['v/:packageName', 'Chocolatey Version', 'version']
+- ['v/:packageName?include_prereleases', 'Chocolatey Version (including pre-releases)', 'version']
 
 chrome-web-store:
-- ['Chrome Web Store', 'price/:storeId', 'funding']
-- ['Chrome Web Store', 'stars/:storeId', 'rating']
-- ['Chrome Web Store', 'users/:storeId', 'downloads']
-- ['Chrome Web Store', 'v/:storeId', 'version']
+- ['price/:storeId', 'Chrome Web Store', 'funding']
+- ['stars/:storeId', 'Chrome Web Store', 'rating']
+- ['users/:storeId', 'Chrome Web Store', 'downloads']
+- ['v/:storeId', 'Chrome Web Store', 'version']
 
 cii:
-- ['CII Best Practices Level', 'level/:projectId', 'analysis']
-- ['CII Best Practices Summary', 'summary/:projectId', 'analysis']
-- ['CII Best Practices Tiered Percentage', 'percentage/:projectId', 'analysis']
+- ['level/:projectId', 'CII Best Practices Level', 'analysis']
+- ['summary/:projectId', 'CII Best Practices Summary', 'analysis']
+- ['percentage/:projectId', 'CII Best Practices Tiered Percentage', 'analysis']
 
 circleci:
-- ['CircleCI', 'build/:vcsType/:user/:repo/:branch*?token=abc123def456', 'build']
+- ['build/:vcsType/:user/:repo/:branch*?token=abc123def456', 'CircleCI', 'build']
 
 cirrus:
-- ['Cirrus CI - Base Branch Build Status', 'github/:user/:repo?script=test&task=analyze', 'build']
-- ['Cirrus CI - Specific Branch Build Status', 'github/:user/:repo/:branch?script=test&task=analyze', 'build']
-- ['Cirrus CI - Specific Task Build Status', 'github/:user/:repo?task=analyze', 'build']
-- ['Cirrus CI - Task and Script Build Status', 'github/:user/:repo?script=test&task=analyze', 'build']
+- ['github/:user/:repo?script=test&task=analyze', 'Cirrus CI - Base Branch Build Status', 'build']
+- ['github/:user/:repo/:branch?script=test&task=analyze', 'Cirrus CI - Specific Branch Build Status', 'build']
+- ['github/:user/:repo?task=analyze', 'Cirrus CI - Specific Task Build Status', 'build']
+- ['github/:user/:repo?script=test&task=analyze', 'Cirrus CI - Task and Script Build Status', 'build']
 
 clojars:
-- ['Clojars Version', 'v/:clojar+', 'version']
-- ['Clojars Version (including pre-releases)', 'v/:clojar+?include_prereleases', 'version']
-- ['ClojarsDownloads', 'dt/:clojar+', 'downloads']
+- ['v/:clojar+', 'Clojars Version', 'version']
+- ['v/:clojar+?include_prereleases', 'Clojars Version (including pre-releases)', 'version']
+- ['dt/:clojar+', 'ClojarsDownloads', 'downloads']
 
 cocoapods:
-- ['Cocoapods', 'l/:spec', 'license']
-- ['Cocoapods', 'v/:spec', 'version']
-- ['Cocoapods doc percentage', 'metrics/doc-percent/:spec', 'analysis']
-- ['Cocoapods platforms', 'p/:spec', 'platform-support']
+- ['l/:spec', 'Cocoapods', 'license']
+- ['v/:spec', 'Cocoapods', 'version']
+- ['metrics/doc-percent/:spec', 'Cocoapods doc percentage', 'analysis']
+- ['p/:spec', 'Cocoapods platforms', 'platform-support']
 
 codacy:
-- ['Codacy branch coverage', 'coverage/:projectId/:branch', 'coverage']
-- ['Codacy branch grade', 'grade/:projectId/:branch', 'analysis']
-- ['Codacy coverage', 'coverage/:projectId', 'coverage']
-- ['Codacy grade', 'grade/:projectId', 'analysis']
+- ['coverage/:projectId/:branch', 'Codacy branch coverage', 'coverage']
+- ['grade/:projectId/:branch', 'Codacy branch grade', 'analysis']
+- ['coverage/:projectId', 'Codacy coverage', 'coverage']
+- ['grade/:projectId', 'Codacy grade', 'analysis']
 
 codeclimate:
-- ['Code Climate coverage', ':format/:user/:repo', 'coverage']
-- ['Code Climate issues', 'issues/:user/:repo', 'analysis']
-- ['Code Climate maintainability', ':format/:user/:repo', 'analysis']
-- ['Code Climate technical debt', 'tech-debt/:user/:repo', 'analysis']
+- [':format/:user/:repo', 'Code Climate coverage', 'coverage']
+- ['issues/:user/:repo', 'Code Climate issues', 'analysis']
+- [':format/:user/:repo', 'Code Climate maintainability', 'analysis']
+- ['tech-debt/:user/:repo', 'Code Climate technical debt', 'analysis']
 
 codecov:
-- ['Codecov', 'c/:vcsName/:user/:repo?flag=flag_name&token=a1b2c3d4e5', 'coverage']
-- ['Codecov branch', 'c/:vcsName/:user/:repo/:branch?flag=flag_name&token=a1b2c3d4e5', 'coverage']
+- ['c/:vcsName/:user/:repo?flag=flag_name&token=a1b2c3d4e5', 'Codecov', 'coverage']
+- ['c/:vcsName/:user/:repo/:branch?flag=flag_name&token=a1b2c3d4e5', 'Codecov branch', 'coverage']
 
 codefactor:
-- ['CodeFactor Grade', 'grade/:vcsType/:user/:repo/:branch*', 'analysis']
+- ['grade/:vcsType/:user/:repo/:branch*', 'CodeFactor Grade', 'analysis']
 
 codeship:
-- ['Codeship', ':projectId', 'build']
-- ['Codeship (branch)', ':projectId/:branch', 'build']
+- [':projectId', 'Codeship', 'build']
+- [':projectId/:branch', 'Codeship (branch)', 'build']
 
 codetally:
-- ['Codetally', ':owner/:repo', 'funding']
+- [':owner/:repo', 'Codetally', 'funding']
 
 conda:
-- ['Conda', 'dn/:channel/:package', 'downloads']
-- ['Conda', 'pn/:channel/:package', 'platform-support']
-- ['Conda', 'v/:channel/:package', 'version']
-- ['Conda (channel only)', 'vn/:channel/:package', 'version']
-- ['Conda - License', 'l/:channel/:package', 'license']
+- ['dn/:channel/:package', 'Conda', 'downloads']
+- ['pn/:channel/:package', 'Conda', 'platform-support']
+- ['v/:channel/:package', 'Conda', 'version']
+- ['vn/:channel/:package', 'Conda (channel only)', 'version']
+- ['l/:channel/:package', 'Conda - License', 'license']
 
 continuousphp:
-- ['continuousphp', ':provider/:user/:repo/:branch', 'build']
+- [':provider/:user/:repo/:branch', 'continuousphp', 'build']
 
 cookbook:
-- ['Chef cookbook', 'v/:cookbook', 'version']
+- ['v/:cookbook', 'Chef cookbook', 'version']
 
 coveralls:
-- ['Coveralls bitbucket', ':vcsType/:user/:repo', 'coverage']
-- ['Coveralls bitbucket branch', ':vcsType/:user/:repo/:branch', 'coverage']
-- ['Coveralls github', ':vcsType/:user/:repo', 'coverage']
-- ['Coveralls github branch', ':vcsType/:user/:repo/:branch', 'coverage']
+- [':vcsType/:user/:repo', 'Coveralls bitbucket', 'coverage']
+- [':vcsType/:user/:repo/:branch', 'Coveralls bitbucket branch', 'coverage']
+- [':vcsType/:user/:repo', 'Coveralls github', 'coverage']
+- [':vcsType/:user/:repo/:branch', 'Coveralls github branch', 'coverage']
 
 coverity:
-- ['Coverity Scan', 'scan/:projectId', 'analysis']
+- ['scan/:projectId', 'Coverity Scan', 'analysis']
 
 cpan:
-- ['CPAN', 'l/:packageName', 'license']
-- ['CPAN', 'v/:packageName', 'version']
+- ['l/:packageName', 'CPAN', 'license']
+- ['v/:packageName', 'CPAN', 'version']
 
 cran:
-- ['CRAN/METACRAN', 'l/:packageName', 'license']
-- ['CRAN/METACRAN', 'v/:packageName', 'version']
+- ['l/:packageName', 'CRAN/METACRAN', 'license']
+- ['v/:packageName', 'CRAN/METACRAN', 'version']
 
 crates:
-- ['Crates.io', 'd/:crate', 'downloads']
-- ['Crates.io', 'l/:crate/:version', 'license']
-- ['Crates.io', 'v/:crate', 'version']
-- ['Crates.io (latest)', 'dv/:crate', 'downloads']
-- ['Crates.io (recent)', 'dr/:crate', 'downloads']
-- ['Crates.io (version)', 'dv/:crate/:version', 'downloads']
+- ['d/:crate', 'Crates.io', 'downloads']
+- ['l/:crate/:version', 'Crates.io', 'license']
+- ['v/:crate', 'Crates.io', 'version']
+- ['dv/:crate', 'Crates.io (latest)', 'downloads']
+- ['dr/:crate', 'Crates.io (recent)', 'downloads']
+- ['dv/:crate/:version', 'Crates.io (version)', 'downloads']
 
 ctan:
-- ['CTAN', 'l/:library', 'license']
-- ['CTAN', 'v/:library', 'version']
+- ['l/:library', 'CTAN', 'license']
+- ['v/:library', 'CTAN', 'version']
 
 date:
-- ['Relative date', ':timestamp', 'other']
+- [':timestamp', 'Relative date', 'other']
 
 david:
-- ['David', ':kind?/:user/:repo', 'dependencies']
-- ['David (path)', ':kind?/:user/:repo?path=packages%2Fbabel-core', 'dependencies']
+- [':kind?/:user/:repo', 'David', 'dependencies']
+- [':kind?/:user/:repo?path=packages%2Fbabel-core', 'David (path)', 'dependencies']
 
 debian:
-- ['Debian package', 'v/:packageName/:distribution?', 'version']
+- ['v/:packageName/:distribution?', 'Debian package', 'version']
 
 dependabot:
-- ['Dependabot SemVer Compatibility', 'semver/:packageManager/:dependencyName', 'analysis']
+- ['semver/:packageManager/:dependencyName', 'Dependabot SemVer Compatibility', 'analysis']
 
 depfu:
-- ['Depfu', ':user/:repo', 'dependencies']
+- [':user/:repo', 'Depfu', 'dependencies']
 
 discord:
-- ['Discord', ':serverId', 'chat']
+- [':serverId', 'Discord', 'chat']
 
 discourse:
-- ['Discourse likes', 'likes?server=https%3A%2F%2Fmeta.discourse.org', 'chat']
-- ['Discourse posts', 'posts?server=https%3A%2F%2Fmeta.discourse.org', 'chat']
-- ['Discourse status', 'status?server=https%3A%2F%2Fmeta.discourse.org', 'chat']
-- ['Discourse topics', 'topics?server=https%3A%2F%2Fmeta.discourse.org', 'chat']
-- ['Discourse users', 'users?server=https%3A%2F%2Fmeta.discourse.org', 'chat']
+- ['likes?server=https%3A%2F%2Fmeta.discourse.org', 'Discourse likes', 'chat']
+- ['posts?server=https%3A%2F%2Fmeta.discourse.org', 'Discourse posts', 'chat']
+- ['status?server=https%3A%2F%2Fmeta.discourse.org', 'Discourse status', 'chat']
+- ['topics?server=https%3A%2F%2Fmeta.discourse.org', 'Discourse topics', 'chat']
+- ['users?server=https%3A%2F%2Fmeta.discourse.org', 'Discourse users', 'chat']
 
 docker:
-- ['Docker Automated build', 'automated/:user/:repo', 'build']
-- ['Docker Build Status', 'build/:user/:repo', 'build']
-- ['Docker Cloud Automated build', 'cloud/automated/:user/:repo', 'build']
-- ['Docker Cloud Build Status', 'cloud/build/:user/:repo', 'build']
-- ['Docker Image Size (latest by date)', 'image-size/:user/:repo?sort=date', 'size']
-- ['Docker Image Size (latest semver)', 'image-size/:user/:repo?sort=semver', 'size']
-- ['Docker Image Size (tag)', 'image-size/:user/:repo/:tag', 'size']
-- ['Docker Image Version (latest by date)', 'v/:user/:repo?sort=date', 'version']
-- ['Docker Image Version (latest semver)', 'v/:user/:repo?sort=semver', 'version']
-- ['Docker Image Version (tag latest semver)', 'v/:user/:repo/:tag', 'version']
-- ['Docker Pulls', 'pulls/:user/:repo', 'downloads']
-- ['Docker Stars', 'stars/:user/:repo', 'rating']
+- ['automated/:user/:repo', 'Docker Automated build', 'build']
+- ['build/:user/:repo', 'Docker Build Status', 'build']
+- ['cloud/automated/:user/:repo', 'Docker Cloud Automated build', 'build']
+- ['cloud/build/:user/:repo', 'Docker Cloud Build Status', 'build']
+- ['image-size/:user/:repo?sort=date', 'Docker Image Size (latest by date)', 'size']
+- ['image-size/:user/:repo?sort=semver', 'Docker Image Size (latest semver)', 'size']
+- ['image-size/:user/:repo/:tag', 'Docker Image Size (tag)', 'size']
+- ['v/:user/:repo?sort=date', 'Docker Image Version (latest by date)', 'version']
+- ['v/:user/:repo?sort=semver', 'Docker Image Version (latest semver)', 'version']
+- ['v/:user/:repo/:tag', 'Docker Image Version (tag latest semver)', 'version']
+- ['pulls/:user/:repo', 'Docker Pulls', 'downloads']
+- ['stars/:user/:repo', 'Docker Stars', 'rating']
 
 drone:
-- ['Drone (cloud)', 'build/:user/:repo', 'build']
-- ['Drone (cloud) with branch', 'build/:user/:repo/:branch', 'build']
-- ['Drone (self-hosted)', 'build/:user/:repo?server=https%3A%2F%2Fdrone.shields.io', 'build']
-- ['Drone (self-hosted) with branch', 'build/:user/:repo/:branch?server=https%3A%2F%2Fdrone.shields.io', 'build']
+- ['build/:user/:repo', 'Drone (cloud)', 'build']
+- ['build/:user/:repo/:branch', 'Drone (cloud) with branch', 'build']
+- ['build/:user/:repo?server=https%3A%2F%2Fdrone.shields.io', 'Drone (self-hosted)', 'build']
+- ['build/:user/:repo/:branch?server=https%3A%2F%2Fdrone.shields.io', 'Drone (self-hosted) with branch', 'build']
 
 dub:
-- ['DUB', ':interval/:packageName/:version*', 'downloads']
-- ['DUB', 'l/:packageName', 'license']
-- ['DUB', 'v/:packageName', 'version']
-- ['DUB (latest)', ':interval/:packageName/:version*', 'downloads']
-- ['DUB (version)', ':interval/:packageName/:version*', 'downloads']
+- [':interval/:packageName/:version*', 'DUB', 'downloads']
+- ['l/:packageName', 'DUB', 'license']
+- ['v/:packageName', 'DUB', 'version']
+- [':interval/:packageName/:version*', 'DUB (latest)', 'downloads']
+- [':interval/:packageName/:version*', 'DUB (version)', 'downloads']
 
 eclipse-marketplace:
-- ['Eclipse Marketplace', 'dt/:name', 'downloads']
-- ['Eclipse Marketplace', 'favorites/:name', 'other']
-- ['Eclipse Marketplace', 'l/:name', 'license']
-- ['Eclipse Marketplace', 'last-update/:name', 'activity']
-- ['Eclipse Marketplace', 'v/:name', 'version']
+- ['dt/:name', 'Eclipse Marketplace', 'downloads']
+- ['favorites/:name', 'Eclipse Marketplace', 'other']
+- ['l/:name', 'Eclipse Marketplace', 'license']
+- ['last-update/:name', 'Eclipse Marketplace', 'activity']
+- ['v/:name', 'Eclipse Marketplace', 'version']
 
 elm-package:
-- ['Elm package', 'v/:user/:packageName', 'version']
+- ['v/:user/:packageName', 'Elm package', 'version']
 
 f-droid:
-- ['F-Droid', 'v/:appId', 'version']
-- ['F-Droid (explicit metadata format)', 'v/:appId?metadata_format=yml', 'version']
+- ['v/:appId', 'F-Droid', 'version']
+- ['v/:appId?metadata_format=yml', 'F-Droid (explicit metadata format)', 'version']
 
 fedora:
-- ['Fedora package', 'v/:packageName/:branch?', 'version']
+- ['v/:packageName/:branch?', 'Fedora package', 'version']
 
 gem:
-- ['Gem', 'dt/:gem', 'downloads']
-- ['Gem', 'v/:gem', 'version']
-- ['Gem download rank', 'rt/:gem', 'downloads']
-- ['Gem download rank (daily)', 'rd/:gem', 'downloads']
-- ['Gems', 'u/:user', 'other']
+- ['dt/:gem', 'Gem', 'downloads']
+- ['v/:gem', 'Gem', 'version']
+- ['rt/:gem', 'Gem download rank', 'downloads']
+- ['rd/:gem', 'Gem download rank (daily)', 'downloads']
+- ['u/:user', 'Gems', 'other']
 
 gerrit:
-- ['Gerrit change status', ':changeId?baseUrl=https%3A%2F%2Fandroid-review.googlesource.com', 'issue-tracking']
+- [':changeId?baseUrl=https%3A%2F%2Fandroid-review.googlesource.com', 'Gerrit change status', 'issue-tracking']
 
 github:
-- ['GitHub', 'license/:user/:repo', 'license']
-- ['GitHub (Pre-)Release Date', 'release-date-pre/:user/:repo', 'activity']
-- ['GitHub All Releases', 'downloads/:user/:repo/total', 'downloads']
-- ['GitHub Hacktoberfest combined status', 'hacktoberfest/2019/:user/:repo', 'issue-tracking']
-- ['GitHub Hacktoberfest combined status (suggestion label override)', 'hacktoberfest/2019/:user/:repo?suggestion_label=help%20wanted', 'issue-tracking']
-- ['GitHub Pipenv locked Python version', 'pipenv/locked/python-version/:user/:repo', 'platform-support']
-- ['GitHub Pipenv locked Python version (branch)', 'pipenv/locked/python-version/:user/:repo/:branch', 'platform-support']
-- ['GitHub Pipenv locked dependency version', 'pipenv/locked/dependency-version/:user/:repo/:kind?/:packageName', 'dependencies']
-- ['GitHub Pipenv locked dependency version (branch)', 'pipenv/locked/dependency-version/:user/:repo/:kind?/:packageName/:branch', 'dependencies']
-- ['GitHub Pre-Releases', 'downloads-pre/:user/:repo/:tag/total', 'downloads']
-- ['GitHub Pre-Releases (by Asset)', 'downloads-pre/:user/:repo/:tag/:path', 'downloads']
-- ['GitHub Release Date', 'release-date/:user/:repo', 'activity']
-- ['GitHub Releases', 'downloads/:user/:repo/:tag/total', 'downloads']
-- ['GitHub Releases (by Asset)', 'downloads/:user/:repo/:tag/:path', 'downloads']
-- ['GitHub Releases (by Release)', 'downloads/:user/:repo/:tag/total', 'downloads']
-- ['GitHub Workflow Status', 'workflow/status/:user/:repo/:workflow', 'build']
-- ['GitHub Workflow Status (branch)', 'workflow/status/:user/:repo/:workflow/:branch', 'build']
-- ['GitHub closed issues', 'issues-closed-raw/:user/:repo', 'issue-tracking']
-- ['GitHub closed pull requests', 'issues-pr-closed-raw/:user/:repo', 'issue-tracking']
-- ['GitHub code size in bytes', 'languages/code-size/:user/:repo', 'size']
-- ['GitHub commit activity', 'commit-activity/:interval/:user/:repo', 'activity']
-- ['GitHub commit merge status', 'commit-status/:user/:repo/:branch/:commit', 'issue-tracking']
-- ['GitHub commits since latest release (by SemVer including pre-releases)', 'commits-since/:user/:repo/:version/:branch*?include_prereleases&sort=semver', 'activity']
-- ['GitHub commits since latest release (by SemVer)', 'commits-since/:user/:repo/:version/:branch*?sort=semver', 'activity']
-- ['GitHub commits since latest release (by date including pre-releases)', 'commits-since/:user/:repo/:version/:branch*?include_prereleases', 'activity']
-- ['GitHub commits since latest release (by date)', 'commits-since/:user/:repo/:version/:branch*', 'activity']
-- ['GitHub commits since latest release (by date) for a branch', 'commits-since/:user/:repo/:version/:branch*', 'activity']
-- ['GitHub commits since tagged version', 'commits-since/:user/:repo/:version/:branch*', 'activity']
-- ['GitHub commits since tagged version (branch)', 'commits-since/:user/:repo/:version/:branch*', 'activity']
-- ['GitHub contributors', ':variant/:user/:repo', 'activity']
-- ['GitHub deployments', 'deployments/:user/:repo/:environment', 'other']
-- ['GitHub file size in bytes', 'size/:user/:repo/:path*', 'size']
-- ['GitHub followers', 'followers/:user?label=Follow', 'social']
-- ['GitHub forks', 'forks/:user/:repo?label=Fork', 'social']
-- ['GitHub go.mod Go version', 'go-mod/go-version/:user/:repo', 'version']
-- ['GitHub go.mod Go version (branch & subfolder of monorepo)', 'go-mod/go-version/:user/:repo/:branch?filename=src%2Fgo.mod', 'version']
-- ['GitHub go.mod Go version (branch)', 'go-mod/go-version/:user/:repo/:branch', 'version']
-- ['GitHub go.mod Go version (subfolder of monorepo)', 'go-mod/go-version/:user/:repo?filename=src%2Fgo.mod', 'version']
-- ['GitHub issue/pull request detail', ':issueKind/detail/:property/:user/:repo/:number', 'issue-tracking']
-- ['GitHub issues', 'issues-raw/:user/:repo', 'issue-tracking']
-- ['GitHub issues by-label', 'issues-raw/:user/:repo/:label', 'issue-tracking']
-- ['GitHub labels', 'labels/:user/:repo/:name', 'issue-tracking']
-- ['GitHub language count', 'languages/count/:user/:repo', 'analysis']
-- ['GitHub last commit', 'last-commit/:user/:repo', 'activity']
-- ['GitHub last commit (branch)', 'last-commit/:user/:repo/:branch', 'activity']
-- ['GitHub manifest version', 'manifest-json/v/:user/:repo/:branch', 'version']
-- ['GitHub manifest.json dynamic', 'manifest-json/:key/:user/:repo/:branch', 'other']
-- ['GitHub milestone', 'milestones/:variant/:user/:repo/:number', 'issue-tracking']
-- ['GitHub milestones', 'milestones/:variant/:user/:repo', 'issue-tracking']
-- ['GitHub package.json dependency version (dev dep on branch)', 'package-json/dependency-version/:user/:repo/dev/:scope?/:packageName/:branch*', 'platform-support']
-- ['GitHub package.json dependency version (prod)', 'package-json/dependency-version/:user/:repo/:packageName', 'platform-support']
-- ['GitHub package.json dependency version (subfolder of monorepo)', 'package-json/dependency-version/:user/:repo/:packageName?filename=packages%2Fchar-width-table-builder%2Fpackage.json', 'platform-support']
-- ['GitHub package.json dynamic', 'package-json/:key/:user/:repo/:branch', 'other']
-- ['GitHub package.json version', 'package-json/v/:user/:repo', 'version']
-- ['GitHub package.json version (branch)', 'package-json/v/:user/:repo/:branch', 'version']
-- ['GitHub pull request check contexts', 'status/contexts/pulls/:user/:repo/:number', 'build']
-- ['GitHub pull request check state', 'status/s/pulls/:user/:repo/:number', 'build']
-- ['GitHub pull requests', 'issues-pr-raw/:user/:repo', 'issue-tracking']
-- ['GitHub pull requests by-label', 'issues-pr-raw/:user/:repo/:label', 'issue-tracking']
-- ['GitHub release (latest SemVer including pre-releases)', 'v/release/:user/:repo?include_prereleases&sort=semver', 'version']
-- ['GitHub release (latest SemVer)', 'v/release/:user/:repo?sort=semver', 'version']
-- ['GitHub release (latest by date including pre-releases)', 'v/release/:user/:repo?include_prereleases', 'version']
-- ['GitHub release (latest by date)', 'v/release/:user/:repo', 'version']
-- ['GitHub repo size', 'repo-size/:user/:repo', 'size']
-- ['GitHub search hit counter', 'search/:user/:repo/:query', 'analysis']
-- ['GitHub stars', 'stars/:user/:repo?style=social', 'social']
-- ['GitHub tag (latest SemVer pre-release)', 'v/tag/:user/:repo?include_prereleases&sort=semver', 'version']
-- ['GitHub tag (latest SemVer)', 'v/tag/:user/:repo?sort=semver', 'version']
-- ['GitHub tag (latest by date)', 'v/tag/:user/:repo', 'version']
-- ['GitHub top language', 'languages/top/:user/:repo', 'analysis']
-- ['GitHub watchers', 'watchers/:user/:repo?label=Watch', 'social']
-- ['Github lerna version', 'lerna-json/v/:user/:repo', 'version']
-- ['Github lerna version (branch)', 'lerna-json/v/:user/:repo/:branch', 'version']
+- ['license/:user/:repo', 'GitHub', 'license']
+- ['release-date-pre/:user/:repo', 'GitHub (Pre-)Release Date', 'activity']
+- ['downloads/:user/:repo/total', 'GitHub All Releases', 'downloads']
+- ['hacktoberfest/2019/:user/:repo', 'GitHub Hacktoberfest combined status', 'issue-tracking']
+- ['hacktoberfest/2019/:user/:repo?suggestion_label=help%20wanted', 'GitHub Hacktoberfest combined status (suggestion label override)', 'issue-tracking']
+- ['pipenv/locked/python-version/:user/:repo', 'GitHub Pipenv locked Python version', 'platform-support']
+- ['pipenv/locked/python-version/:user/:repo/:branch', 'GitHub Pipenv locked Python version (branch)', 'platform-support']
+- ['pipenv/locked/dependency-version/:user/:repo/:kind?/:packageName', 'GitHub Pipenv locked dependency version', 'dependencies']
+- ['pipenv/locked/dependency-version/:user/:repo/:kind?/:packageName/:branch', 'GitHub Pipenv locked dependency version (branch)', 'dependencies']
+- ['downloads-pre/:user/:repo/:tag/total', 'GitHub Pre-Releases', 'downloads']
+- ['downloads-pre/:user/:repo/:tag/:path', 'GitHub Pre-Releases (by Asset)', 'downloads']
+- ['release-date/:user/:repo', 'GitHub Release Date', 'activity']
+- ['downloads/:user/:repo/:tag/total', 'GitHub Releases', 'downloads']
+- ['downloads/:user/:repo/:tag/:path', 'GitHub Releases (by Asset)', 'downloads']
+- ['downloads/:user/:repo/:tag/total', 'GitHub Releases (by Release)', 'downloads']
+- ['workflow/status/:user/:repo/:workflow', 'GitHub Workflow Status', 'build']
+- ['workflow/status/:user/:repo/:workflow/:branch', 'GitHub Workflow Status (branch)', 'build']
+- ['issues-closed-raw/:user/:repo', 'GitHub closed issues', 'issue-tracking']
+- ['issues-pr-closed-raw/:user/:repo', 'GitHub closed pull requests', 'issue-tracking']
+- ['languages/code-size/:user/:repo', 'GitHub code size in bytes', 'size']
+- ['commit-activity/:interval/:user/:repo', 'GitHub commit activity', 'activity']
+- ['commit-status/:user/:repo/:branch/:commit', 'GitHub commit merge status', 'issue-tracking']
+- ['commits-since/:user/:repo/:version/:branch*?include_prereleases&sort=semver', 'GitHub commits since latest release (by SemVer including pre-releases)', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*?sort=semver', 'GitHub commits since latest release (by SemVer)', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*?include_prereleases', 'GitHub commits since latest release (by date including pre-releases)', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*', 'GitHub commits since latest release (by date)', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*', 'GitHub commits since latest release (by date) for a branch', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*', 'GitHub commits since tagged version', 'activity']
+- ['commits-since/:user/:repo/:version/:branch*', 'GitHub commits since tagged version (branch)', 'activity']
+- [':variant/:user/:repo', 'GitHub contributors', 'activity']
+- ['deployments/:user/:repo/:environment', 'GitHub deployments', 'other']
+- ['size/:user/:repo/:path*', 'GitHub file size in bytes', 'size']
+- ['followers/:user?label=Follow', 'GitHub followers', 'social']
+- ['forks/:user/:repo?label=Fork', 'GitHub forks', 'social']
+- ['go-mod/go-version/:user/:repo', 'GitHub go.mod Go version', 'version']
+- ['go-mod/go-version/:user/:repo/:branch?filename=src%2Fgo.mod', 'GitHub go.mod Go version (branch & subfolder of monorepo)', 'version']
+- ['go-mod/go-version/:user/:repo/:branch', 'GitHub go.mod Go version (branch)', 'version']
+- ['go-mod/go-version/:user/:repo?filename=src%2Fgo.mod', 'GitHub go.mod Go version (subfolder of monorepo)', 'version']
+- [':issueKind/detail/:property/:user/:repo/:number', 'GitHub issue/pull request detail', 'issue-tracking']
+- ['issues-raw/:user/:repo', 'GitHub issues', 'issue-tracking']
+- ['issues-raw/:user/:repo/:label', 'GitHub issues by-label', 'issue-tracking']
+- ['labels/:user/:repo/:name', 'GitHub labels', 'issue-tracking']
+- ['languages/count/:user/:repo', 'GitHub language count', 'analysis']
+- ['last-commit/:user/:repo', 'GitHub last commit', 'activity']
+- ['last-commit/:user/:repo/:branch', 'GitHub last commit (branch)', 'activity']
+- ['manifest-json/v/:user/:repo/:branch', 'GitHub manifest version', 'version']
+- ['manifest-json/:key/:user/:repo/:branch', 'GitHub manifest.json dynamic', 'other']
+- ['milestones/:variant/:user/:repo/:number', 'GitHub milestone', 'issue-tracking']
+- ['milestones/:variant/:user/:repo', 'GitHub milestones', 'issue-tracking']
+- ['package-json/dependency-version/:user/:repo/dev/:scope?/:packageName/:branch*', 'GitHub package.json dependency version (dev dep on branch)', 'platform-support']
+- ['package-json/dependency-version/:user/:repo/:packageName', 'GitHub package.json dependency version (prod)', 'platform-support']
+- ['package-json/dependency-version/:user/:repo/:packageName?filename=packages%2Fchar-width-table-builder%2Fpackage.json', 'GitHub package.json dependency version (subfolder of monorepo)', 'platform-support']
+- ['package-json/:key/:user/:repo/:branch', 'GitHub package.json dynamic', 'other']
+- ['package-json/v/:user/:repo', 'GitHub package.json version', 'version']
+- ['package-json/v/:user/:repo/:branch', 'GitHub package.json version (branch)', 'version']
+- ['status/contexts/pulls/:user/:repo/:number', 'GitHub pull request check contexts', 'build']
+- ['status/s/pulls/:user/:repo/:number', 'GitHub pull request check state', 'build']
+- ['issues-pr-raw/:user/:repo', 'GitHub pull requests', 'issue-tracking']
+- ['issues-pr-raw/:user/:repo/:label', 'GitHub pull requests by-label', 'issue-tracking']
+- ['v/release/:user/:repo?include_prereleases&sort=semver', 'GitHub release (latest SemVer including pre-releases)', 'version']
+- ['v/release/:user/:repo?sort=semver', 'GitHub release (latest SemVer)', 'version']
+- ['v/release/:user/:repo?include_prereleases', 'GitHub release (latest by date including pre-releases)', 'version']
+- ['v/release/:user/:repo', 'GitHub release (latest by date)', 'version']
+- ['repo-size/:user/:repo', 'GitHub repo size', 'size']
+- ['search/:user/:repo/:query', 'GitHub search hit counter', 'analysis']
+- ['stars/:user/:repo?style=social', 'GitHub stars', 'social']
+- ['v/tag/:user/:repo?include_prereleases&sort=semver', 'GitHub tag (latest SemVer pre-release)', 'version']
+- ['v/tag/:user/:repo?sort=semver', 'GitHub tag (latest SemVer)', 'version']
+- ['v/tag/:user/:repo', 'GitHub tag (latest by date)', 'version']
+- ['languages/top/:user/:repo', 'GitHub top language', 'analysis']
+- ['watchers/:user/:repo?label=Watch', 'GitHub watchers', 'social']
+- ['lerna-json/v/:user/:repo', 'Github lerna version', 'version']
+- ['lerna-json/v/:user/:repo/:branch', 'Github lerna version (branch)', 'version']
 
 gitlab:
-- ['Gitlab pipeline status', 'pipeline/:user/:repo', 'build']
-- ['Gitlab pipeline status (branch)', 'pipeline/:user/:repo/:branch', 'build']
-- ['Gitlab pipeline status (self-hosted)', 'pipeline/:user/:repo?gitlab_url=https%3A%2F%2Fgitlab.gnome.org', 'build']
+- ['pipeline/:user/:repo', 'Gitlab pipeline status', 'build']
+- ['pipeline/:user/:repo/:branch', 'Gitlab pipeline status (branch)', 'build']
+- ['pipeline/:user/:repo?gitlab_url=https%3A%2F%2Fgitlab.gnome.org', 'Gitlab pipeline status (self-hosted)', 'build']
 
 gitter:
-- ['Gitter', 'room/:user/:repo', 'chat']
+- ['room/:user/:repo', 'Gitter', 'chat']
 
 hackage:
-- ['Hackage', 'v/:packageName', 'version']
+- ['v/:packageName', 'Hackage', 'version']
 
 hackage-deps:
-- ['Hackage-Deps', 'v/:packageName', 'dependencies']
+- ['v/:packageName', 'Hackage-Deps', 'dependencies']
 
 hexpm:
-- ['Hex.pm', 'dt/:packageName', 'downloads']
-- ['Hex.pm', 'l/:packageName', 'license']
-- ['Hex.pm', 'v/:packageName', 'version']
+- ['dt/:packageName', 'Hex.pm', 'downloads']
+- ['l/:packageName', 'Hex.pm', 'license']
+- ['v/:packageName', 'Hex.pm', 'version']
 
 homebrew:
-- ['homebrew', 'v/:formula', 'version']
-- ['homebrew cask', 'cask/v/:cask', 'version']
+- ['v/:formula', 'homebrew', 'version']
+- ['cask/v/:cask', 'homebrew cask', 'version']
 
 hsts:
-- ['Chromium HSTS preload', 'preload/:domain', 'monitoring']
+- ['preload/:domain', 'Chromium HSTS preload', 'monitoring']
 
 itunes:
-- ['iTunes App Store', 'v/:bundleId', 'version']
+- ['v/:bundleId', 'iTunes App Store', 'version']
 
 jenkins:
-- ['Jenkins', 'build?jobUrl=https%3A%2F%2Fwso2.org%2Fjenkins%2Fview%2FAll%2520Builds%2Fjob%2Farchetypes', 'build']
-- ['Jenkins Coverage', 'coverage/:format?jobUrl=https%3A%2F%2Fjenkins.sqlalchemy.org%2Fjob%2Falembic_coverage', 'coverage']
-- ['Jenkins Plugin installs', 'plugin/i/:plugin', 'downloads']
-- ['Jenkins Plugin installs (version)', 'plugin/i/:plugin/:version', 'downloads']
-- ['Jenkins Plugins', 'plugin/v/:plugin', 'version']
-- ['Jenkins tests', 'tests?compact_message&failed_label=failed&jobUrl=https%3A%2F%2Fjenkins.sqlalchemy.org%2Fjob%2Falembic_coverage&passed_label=passed&skipped_label=skipped', 'build']
+- ['build?jobUrl=https%3A%2F%2Fwso2.org%2Fjenkins%2Fview%2FAll%2520Builds%2Fjob%2Farchetypes', 'Jenkins', 'build']
+- ['coverage/:format?jobUrl=https%3A%2F%2Fjenkins.sqlalchemy.org%2Fjob%2Falembic_coverage', 'Jenkins Coverage', 'coverage']
+- ['plugin/i/:plugin', 'Jenkins Plugin installs', 'downloads']
+- ['plugin/i/:plugin/:version', 'Jenkins Plugin installs (version)', 'downloads']
+- ['plugin/v/:plugin', 'Jenkins Plugins', 'version']
+- ['tests?compact_message&failed_label=failed&jobUrl=https%3A%2F%2Fjenkins.sqlalchemy.org%2Fjob%2Falembic_coverage&passed_label=passed&skipped_label=skipped', 'Jenkins tests', 'build']
 
 jetbrains:
-- ['JetBrains IntelliJ Plugins', 'plugin/r/stars/:pluginId', 'rating']
-- ['JetBrains IntelliJ Plugins', 'plugin/v/:pluginId', 'version']
-- ['JetBrains IntelliJ plugins', 'plugin/d/:pluginId', 'downloads']
+- ['plugin/r/stars/:pluginId', 'JetBrains IntelliJ Plugins', 'rating']
+- ['plugin/v/:pluginId', 'JetBrains IntelliJ Plugins', 'version']
+- ['plugin/d/:pluginId', 'JetBrains IntelliJ plugins', 'downloads']
 
 jira:
-- ['JIRA issue', 'issue/:issueKey?baseUrl=https%3A%2F%2Fissues.apache.org%2Fjira', 'issue-tracking']
-- ['JIRA sprint completion', 'sprint/:sprintId?baseUrl=https%3A%2F%2Fjira.spring.io', 'issue-tracking']
+- ['issue/:issueKey?baseUrl=https%3A%2F%2Fissues.apache.org%2Fjira', 'JIRA issue', 'issue-tracking']
+- ['sprint/:sprintId?baseUrl=https%3A%2F%2Fjira.spring.io', 'JIRA sprint completion', 'issue-tracking']
 
 jitpack:
-- ['JitPack', 'v/:vcs/:user/:repo', 'version']
+- ['v/:vcs/:user/:repo', 'JitPack', 'version']
 
 jsdelivr:
-- ['jsDelivr hits (GitHub)', 'gh/:period/:user/:repo', 'downloads']
-- ['jsDelivr hits (npm scoped)', 'npm/:period/:scope?/:packageName', 'downloads']
-- ['jsDelivr hits (npm)', 'npm/:period/:packageName', 'downloads']
+- ['gh/:period/:user/:repo', 'jsDelivr hits (GitHub)', 'downloads']
+- ['npm/:period/:scope?/:packageName', 'jsDelivr hits (npm scoped)', 'downloads']
+- ['npm/:period/:packageName', 'jsDelivr hits (npm)', 'downloads']
 
 keybase:
-- ['Keybase BTC', 'btc/:username', 'social']
-- ['Keybase PGP', 'pgp/:username', 'social']
-- ['Keybase XLM', 'xlm/:username', 'social']
-- ['Keybase ZEC', 'zec/:username', 'social']
+- ['btc/:username', 'Keybase BTC', 'social']
+- ['pgp/:username', 'Keybase PGP', 'social']
+- ['xlm/:username', 'Keybase XLM', 'social']
+- ['zec/:username', 'Keybase ZEC', 'social']
 
 lgtm:
-- ['LGTM Alerts', 'alerts/:host/:user/:repo', 'analysis']
-- ['LGTM Grade', 'grade/:language/:host/:user/:repo', 'analysis']
+- ['alerts/:host/:user/:repo', 'LGTM Alerts', 'analysis']
+- ['grade/:language/:host/:user/:repo', 'LGTM Grade', 'analysis']
 
 liberapay:
-- ['Liberapay giving', 'gives/:entity', 'funding']
-- ['Liberapay goal progress', 'goal/:entity', 'funding']
-- ['Liberapay patrons', 'patrons/:entity', 'funding']
-- ['Liberapay receiving', 'receives/:entity', 'funding']
+- ['gives/:entity', 'Liberapay giving', 'funding']
+- ['goal/:entity', 'Liberapay goal progress', 'funding']
+- ['patrons/:entity', 'Liberapay patrons', 'funding']
+- ['receives/:entity', 'Liberapay receiving', 'funding']
 
 librariesio:
-- ['Dependent repos (via libraries.io)', 'dependent-repos/:platform/:packageName', 'other']
-- ['Dependent repos (via libraries.io), scoped npm package', 'dependent-repos/:platform/:scope/:packageName', 'other']
-- ['Dependents (via libraries.io)', 'dependents/:platform/:packageName', 'other']
-- ['Dependents (via libraries.io), scoped npm package', 'dependents/:platform/:scope/:packageName', 'other']
-- ['Libraries.io SourceRank', 'sourcerank/:platform/:packageName', 'rating']
-- ['Libraries.io SourceRank, scoped npm package', 'sourcerank/:platform/:scope/:packageName', 'rating']
-- ['Libraries.io dependency status for GitHub repo', 'github/:user/:repo', 'dependencies']
-- ['Libraries.io dependency status for latest release', 'release/:platform/:packageName', 'dependencies']
-- ['Libraries.io dependency status for latest release, scoped npm package', 'release/:platform/:scope/:packageName', 'dependencies']
-- ['Libraries.io dependency status for specific release', 'release/:platform/:packageName/:version', 'dependencies']
-- ['Libraries.io dependency status for specific release, scoped npm package', 'release/:platform/:scope/:packageName/:version', 'dependencies']
+- ['dependent-repos/:platform/:packageName', 'Dependent repos (via libraries.io)', 'other']
+- ['dependent-repos/:platform/:scope/:packageName', 'Dependent repos (via libraries.io), scoped npm package', 'other']
+- ['dependents/:platform/:packageName', 'Dependents (via libraries.io)', 'other']
+- ['dependents/:platform/:scope/:packageName', 'Dependents (via libraries.io), scoped npm package', 'other']
+- ['sourcerank/:platform/:packageName', 'Libraries.io SourceRank', 'rating']
+- ['sourcerank/:platform/:scope/:packageName', 'Libraries.io SourceRank, scoped npm package', 'rating']
+- ['github/:user/:repo', 'Libraries.io dependency status for GitHub repo', 'dependencies']
+- ['release/:platform/:packageName', 'Libraries.io dependency status for latest release', 'dependencies']
+- ['release/:platform/:scope/:packageName', 'Libraries.io dependency status for latest release, scoped npm package', 'dependencies']
+- ['release/:platform/:packageName/:version', 'Libraries.io dependency status for specific release', 'dependencies']
+- ['release/:platform/:scope/:packageName/:version', 'Libraries.io dependency status for specific release, scoped npm package', 'dependencies']
 
 luarocks:
-- ['LuaRocks', 'v/:user/:moduleName/:version?', 'version']
+- ['v/:user/:moduleName/:version?', 'LuaRocks', 'version']
 
 maintenance:
-- ['Maintenance', ':maintained/:year', 'other']
+- [':maintained/:year', 'Maintenance', 'other']
 
 mastodon:
-- ['Mastodon Follow', 'follow/:id?domain=https%3A%2F%2Fmastodon.social', 'social']
+- ['follow/:id?domain=https%3A%2F%2Fmastodon.social', 'Mastodon Follow', 'social']
 
 matrix:
-- ['Matrix', ':roomAlias?server_fqdn=matrix.org', 'chat']
+- [':roomAlias?server_fqdn=matrix.org', 'Matrix', 'chat']
 
 maven-central:
-- ['Maven Central', 'v/:groupId/:artifactId', 'version']
-- ['Maven Central with version prefix filter', 'v/:groupId/:artifactId/:versionPrefix', 'version']
+- ['v/:groupId/:artifactId', 'Maven Central', 'version']
+- ['v/:groupId/:artifactId/:versionPrefix', 'Maven Central with version prefix filter', 'version']
 
 maven-metadata:
-- ['Maven metadata URL', 'v?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fcom%2Fgoogle%2Fcode%2Fgson%2Fgson%2Fmaven-metadata.xml', 'version']
+- ['v?metadataUrl=https%3A%2F%2Frepo1.maven.org%2Fmaven2%2Fcom%2Fgoogle%2Fcode%2Fgson%2Fgson%2Fmaven-metadata.xml', 'Maven metadata URL', 'version']
 
 microbadger:
-- ['MicroBadger Layers', 'layers/:user/:repo', 'size']
-- ['MicroBadger Layers (tag)', 'layers/:user/:repo/:tag', 'size']
-- ['MicroBadger Size', 'image-size/:user/:repo', 'size']
-- ['MicroBadger Size (tag)', 'image-size/:user/:repo/:tag', 'size']
+- ['layers/:user/:repo', 'MicroBadger Layers', 'size']
+- ['layers/:user/:repo/:tag', 'MicroBadger Layers (tag)', 'size']
+- ['image-size/:user/:repo', 'MicroBadger Size', 'size']
+- ['image-size/:user/:repo/:tag', 'MicroBadger Size (tag)', 'size']
 
 mozilla-observatory:
-- ['Mozilla HTTP Observatory Grade', ':format/:host?publish', 'monitoring']
+- [':format/:host?publish', 'Mozilla HTTP Observatory Grade', 'monitoring']
 
 myget:
-- ['MyGet', ':feed/dt/:packageName', 'downloads']
-- ['MyGet', ':feed/v/:packageName', 'version']
-- ['MyGet (with prereleases)', ':feed/vpre/:packageName', 'version']
+- [':feed/dt/:packageName', 'MyGet', 'downloads']
+- [':feed/v/:packageName', 'MyGet', 'version']
+- [':feed/vpre/:packageName', 'MyGet (with prereleases)', 'version']
 
 netlify:
-- ['Netlify', ':projectId', 'build']
+- [':projectId', 'Netlify', 'build']
 
 nexus:
-- ['Sonatype Nexus (Query Options)', ':repo/:groupId/:artifactId?queryOpt=%3Ac%3Dagent-apple-osx%3Ap%3Dtar.gz&server=https%3A%2F%2Frepository.jboss.org%2Fnexus', 'version']
-- ['Sonatype Nexus (Releases)', 'r/:groupId/:artifactId?nexusVersion=3&server=https%3A%2F%2Fnexus.pentaho.org', 'version']
-- ['Sonatype Nexus (Repository)', ':repo/:groupId/:artifactId?server=https%3A%2F%2Frepository.jboss.org%2Fnexus', 'version']
-- ['Sonatype Nexus (Snapshots)', 's/:groupId/:artifactId?server=https%3A%2F%2Foss.sonatype.org', 'version']
+- [':repo/:groupId/:artifactId?queryOpt=%3Ac%3Dagent-apple-osx%3Ap%3Dtar.gz&server=https%3A%2F%2Frepository.jboss.org%2Fnexus', 'Sonatype Nexus (Query Options)', 'version']
+- ['r/:groupId/:artifactId?nexusVersion=3&server=https%3A%2F%2Fnexus.pentaho.org', 'Sonatype Nexus (Releases)', 'version']
+- [':repo/:groupId/:artifactId?server=https%3A%2F%2Frepository.jboss.org%2Fnexus', 'Sonatype Nexus (Repository)', 'version']
+- ['s/:groupId/:artifactId?server=https%3A%2F%2Foss.sonatype.org', 'Sonatype Nexus (Snapshots)', 'version']
 
 node:
-- ['node-current', 'v/:packageName', 'platform-support']
-- ['node-current (scoped with tag)', 'v/@:scope/:packageName/:tag', 'platform-support']
-- ['node-current (scoped with tag, custom registry)', 'v/@:scope/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'platform-support']
-- ['node-current (scoped)', 'v/@:scope/:packageName', 'platform-support']
-- ['node-current (tag)', 'v/:packageName/:tag', 'platform-support']
-- ['node-lts', 'v-lts/:packageName', 'platform-support']
-- ['node-lts (scoped with tag)', 'v-lts/@:scope/:packageName/:tag', 'platform-support']
-- ['node-lts (scoped with tag, custom registry)', 'v-lts/@:scope/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'platform-support']
-- ['node-lts (scoped)', 'v-lts/@:scope/:packageName', 'platform-support']
-- ['node-lts (tag)', 'v-lts/:packageName/:tag', 'platform-support']
+- ['v/:packageName', 'node-current', 'platform-support']
+- ['v/@:scope/:packageName/:tag', 'node-current (scoped with tag)', 'platform-support']
+- ['v/@:scope/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'node-current (scoped with tag, custom registry)', 'platform-support']
+- ['v/@:scope/:packageName', 'node-current (scoped)', 'platform-support']
+- ['v/:packageName/:tag', 'node-current (tag)', 'platform-support']
+- ['v-lts/:packageName', 'node-lts', 'platform-support']
+- ['v-lts/@:scope/:packageName/:tag', 'node-lts (scoped with tag)', 'platform-support']
+- ['v-lts/@:scope/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'node-lts (scoped with tag, custom registry)', 'platform-support']
+- ['v-lts/@:scope/:packageName', 'node-lts (scoped)', 'platform-support']
+- ['v-lts/:packageName/:tag', 'node-lts (tag)', 'platform-support']
 
 nodeping:
-- ['NodePing status', 'status/:checkUuid?down_color=lightgrey&down_message=offline&up_color=blue&up_message=online', 'monitoring']
-- ['NodePing uptime', 'uptime/:checkUuid', 'monitoring']
+- ['status/:checkUuid?down_color=lightgrey&down_message=offline&up_color=blue&up_message=online', 'NodePing status', 'monitoring']
+- ['uptime/:checkUuid', 'NodePing uptime', 'monitoring']
 
 npm:
-- ['NPM', 'l/:packageName?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'license']
-- ['npm', ':interval/:scope?/:packageName', 'downloads']
-- ['npm', 'v/:packageName', 'version']
-- ['npm (custom registry)', 'v/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'version']
-- ['npm (prod) dependency version', 'dependency-version/:packageName/:dependency', 'platform-support']
-- ['npm (prod) dependency version (scoped)', 'dependency-version/:scope?/:packageName/:dependencyScope?/:dependency', 'platform-support']
-- ['npm (scoped with tag)', 'v/:scope/:packageName/:tag', 'version']
-- ['npm (scoped)', 'v/:scope/:packageName', 'version']
-- ['npm (tag)', 'v/:packageName/:tag', 'version']
-- ['npm collaborators', 'collaborators/:packageName?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'activity']
-- ['npm dev dependency version', 'dependency-version/:packageName/dev/:dependency', 'platform-support']
-- ['npm dev dependency version (scoped)', 'dependency-version/:scope?/:packageName/dev/:dependencyScope?/:dependency', 'platform-support']
-- ['npm peer dependency version', 'dependency-version/:packageName/peer/:dependency', 'platform-support']
-- ['npm peer dependency version (scoped)', 'dependency-version/:scope?/:packageName/dev/:dependencyScope?/:dependency', 'platform-support']
-- ['npm type definitions', 'types/:packageName', 'platform-support']
+- ['l/:packageName?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'NPM', 'license']
+- [':interval/:scope?/:packageName', 'npm', 'downloads']
+- ['v/:packageName', 'npm', 'version']
+- ['v/:packageName/:tag?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'npm (custom registry)', 'version']
+- ['dependency-version/:packageName/:dependency', 'npm (prod) dependency version', 'platform-support']
+- ['dependency-version/:scope?/:packageName/:dependencyScope?/:dependency', 'npm (prod) dependency version (scoped)', 'platform-support']
+- ['v/:scope/:packageName/:tag', 'npm (scoped with tag)', 'version']
+- ['v/:scope/:packageName', 'npm (scoped)', 'version']
+- ['v/:packageName/:tag', 'npm (tag)', 'version']
+- ['collaborators/:packageName?registry_uri=https%3A%2F%2Fregistry.npmjs.com', 'npm collaborators', 'activity']
+- ['dependency-version/:packageName/dev/:dependency', 'npm dev dependency version', 'platform-support']
+- ['dependency-version/:scope?/:packageName/dev/:dependencyScope?/:dependency', 'npm dev dependency version (scoped)', 'platform-support']
+- ['dependency-version/:packageName/peer/:dependency', 'npm peer dependency version', 'platform-support']
+- ['dependency-version/:scope?/:packageName/dev/:dependencyScope?/:dependency', 'npm peer dependency version (scoped)', 'platform-support']
+- ['types/:packageName', 'npm type definitions', 'platform-support']
 
 nuget:
-- ['Nuget', 'dt/:packageName', 'downloads']
-- ['Nuget', 'v/:packageName', 'version']
-- ['Nuget (with prereleases)', 'vpre/:packageName', 'version']
+- ['dt/:packageName', 'Nuget', 'downloads']
+- ['v/:packageName', 'Nuget', 'version']
+- ['vpre/:packageName', 'Nuget (with prereleases)', 'version']
 
 nycrc:
-- ['nycrc config on GitHub', ':user/:repo?config=.nycrc&preferredThreshold=lines', 'coverage']
+- [':user/:repo?config=.nycrc&preferredThreshold=lines', 'nycrc config on GitHub', 'coverage']
 
 offset-earth:
-- ['Offset Earth (Carbon Offset)', 'carbon/:username', 'other']
-- ['Offset Earth (Trees)', 'trees/:username', 'other']
+- ['carbon/:username', 'Offset Earth (Carbon Offset)', 'other']
+- ['trees/:username', 'Offset Earth (Trees)', 'other']
 
 opencollective:
-- ['Open Collective backers', 'backers/:collective', 'funding']
-- ['Open Collective backers and sponsors', 'all/:collective', 'funding']
-- ['Open Collective members by tier', 'tier/:collective/:tierId', 'funding']
-- ['Open Collective sponsors', 'sponsors/:collective', 'funding']
+- ['backers/:collective', 'Open Collective backers', 'funding']
+- ['all/:collective', 'Open Collective backers and sponsors', 'funding']
+- ['tier/:collective/:tierId', 'Open Collective members by tier', 'funding']
+- ['sponsors/:collective', 'Open Collective sponsors', 'funding']
 
 opm:
-- ['OPM', 'v/:user/:moduleName', 'version']
+- ['v/:user/:moduleName', 'OPM', 'version']
 
 osslifecycle:
-- ['OSS Lifecycle', ':user/:repo', 'other']
-- ['OSS Lifecycle (branch)', ':user/:repo/:branch', 'other']
+- [':user/:repo', 'OSS Lifecycle', 'other']
+- [':user/:repo/:branch', 'OSS Lifecycle (branch)', 'other']
 
 packagecontrol:
-- ['Package Control', 'dt/:packageName', 'downloads']
+- ['dt/:packageName', 'Package Control', 'downloads']
 
 packagist:
-- ['Packagist Downloads', ':interval/:user/:repo', 'downloads']
-- ['Packagist Downloads (custom server)', ':interval/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'downloads']
-- ['Packagist License', 'l/:user/:repo', 'license']
-- ['Packagist License (custom server)', 'l/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'license']
-- ['Packagist PHP Version Support', 'php-v/:user/:repo', 'platform-support']
-- ['Packagist PHP Version Support (custom server)', 'php-v/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'platform-support']
-- ['Packagist PHP Version Support (specify version)', 'php-v/:user/:repo/:version', 'platform-support']
-- ['Packagist Stars', 'stars/:user/:repo', 'rating']
-- ['Packagist Stars (custom server)', 'stars/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'rating']
-- ['Packagist Version', 'v/:user/:repo', 'version']
-- ['Packagist Version (custom server)', 'v/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'version']
-- ['Packagist Version (including pre-releases)', 'v/:user/:repo?include_prereleases', 'version']
+- [':interval/:user/:repo', 'Packagist Downloads', 'downloads']
+- [':interval/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'Packagist Downloads (custom server)', 'downloads']
+- ['l/:user/:repo', 'Packagist License', 'license']
+- ['l/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'Packagist License (custom server)', 'license']
+- ['php-v/:user/:repo', 'Packagist PHP Version Support', 'platform-support']
+- ['php-v/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'Packagist PHP Version Support (custom server)', 'platform-support']
+- ['php-v/:user/:repo/:version', 'Packagist PHP Version Support (specify version)', 'platform-support']
+- ['stars/:user/:repo', 'Packagist Stars', 'rating']
+- ['stars/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'Packagist Stars (custom server)', 'rating']
+- ['v/:user/:repo', 'Packagist Version', 'version']
+- ['v/:user/:repo?server=https%3A%2F%2Fpackagist.org', 'Packagist Version (custom server)', 'version']
+- ['v/:user/:repo?include_prereleases', 'Packagist Version (including pre-releases)', 'version']
 
 pkgreview:
-- ['pkgreview.dev Package Ratings', 'rating/:pkgManager/:pkgSlug+', 'rating']
-- ['pkgreview.dev Star Ratings', 'stars/:pkgManager/:pkgSlug+', 'rating']
+- ['rating/:pkgManager/:pkgSlug+', 'pkgreview.dev Package Ratings', 'rating']
+- ['stars/:pkgManager/:pkgSlug+', 'pkgreview.dev Star Ratings', 'rating']
 
 poeditor:
-- ['POEditor', 'progress/:projectId/:languageCode?token=abc123def456', 'other']
+- ['progress/:projectId/:languageCode?token=abc123def456', 'POEditor', 'other']
 
 powershellgallery:
-- ['PowerShell Gallery', 'dt/:packageName', 'downloads']
-- ['PowerShell Gallery', 'p/:packageName', 'platform-support']
-- ['PowerShell Gallery Version', 'v/:packageName', 'version']
-- ['PowerShell Gallery Version (including pre-releases)', 'v/:packageName?include_prereleases', 'version']
+- ['dt/:packageName', 'PowerShell Gallery', 'downloads']
+- ['p/:packageName', 'PowerShell Gallery', 'platform-support']
+- ['v/:packageName', 'PowerShell Gallery Version', 'version']
+- ['v/:packageName?include_prereleases', 'PowerShell Gallery Version (including pre-releases)', 'version']
 
 pub:
-- ['Pub Version', 'v/:packageName', 'version']
-- ['Pub Version (including pre-releases)', 'v/:packageName?include_prereleases', 'version']
+- ['v/:packageName', 'Pub Version', 'version']
+- ['v/:packageName?include_prereleases', 'Pub Version (including pre-releases)', 'version']
 
 puppetforge:
-- ['Puppet Forge downloads', 'dt/:user/:moduleName', 'downloads']
-- ['Puppet Forge endorsement', 'e/:user/:moduleName', 'rating']
-- ['Puppet Forge feedback score', 'f/:user/:moduleName', 'rating']
-- ['Puppet Forge modules by user', 'mc/:user', 'other']
-- ['Puppet Forge releases by user', 'rc/:user', 'other']
-- ['Puppet Forge version', 'v/:user/:moduleName', 'version']
-- ['Puppet Forge – PDK version', 'pdk-version/:user/:moduleName', 'platform-support']
+- ['dt/:user/:moduleName', 'Puppet Forge downloads', 'downloads']
+- ['e/:user/:moduleName', 'Puppet Forge endorsement', 'rating']
+- ['f/:user/:moduleName', 'Puppet Forge feedback score', 'rating']
+- ['mc/:user', 'Puppet Forge modules by user', 'other']
+- ['rc/:user', 'Puppet Forge releases by user', 'other']
+- ['v/:user/:moduleName', 'Puppet Forge version', 'version']
+- ['pdk-version/:user/:moduleName', 'Puppet Forge – PDK version', 'platform-support']
 
 pypi:
-- ['PyPI', 'v/:packageName', 'version']
-- ['PyPI - Django Version', 'djversions/:packageName', 'platform-support']
-- ['PyPI - Downloads', ':period/:packageName', 'downloads']
-- ['PyPI - Format', 'format/:packageName', 'other']
-- ['PyPI - Implementation', 'implementation/:packageName', 'platform-support']
-- ['PyPI - License', 'l/:packageName', 'license']
-- ['PyPI - Python Version', 'pyversions/:packageName', 'platform-support']
-- ['PyPI - Status', 'status/:packageName', 'other']
-- ['PyPI - Wheel', 'wheel/:packageName', 'platform-support']
+- ['v/:packageName', 'PyPI', 'version']
+- ['djversions/:packageName', 'PyPI - Django Version', 'platform-support']
+- [':period/:packageName', 'PyPI - Downloads', 'downloads']
+- ['format/:packageName', 'PyPI - Format', 'other']
+- ['implementation/:packageName', 'PyPI - Implementation', 'platform-support']
+- ['l/:packageName', 'PyPI - License', 'license']
+- ['pyversions/:packageName', 'PyPI - Python Version', 'platform-support']
+- ['status/:packageName', 'PyPI - Status', 'other']
+- ['wheel/:packageName', 'PyPI - Wheel', 'platform-support']
 
 readthedocs:
-- ['Read the Docs', ':packageName', 'build']
-- ['Read the Docs (version)', ':packageName/:version', 'build']
+- [':packageName', 'Read the Docs', 'build']
+- [':packageName/:version', 'Read the Docs (version)', 'build']
 
 reddit:
-- ['Subreddit subscribers', 'subreddit-subscribers/:subreddit', 'social']
+- ['subreddit-subscribers/:subreddit', 'Subreddit subscribers', 'social']
 
 redmine:
-- ['Plugin on redmine.org', 'plugin/stars/:plugin', 'rating']
+- ['plugin/stars/:plugin', 'Plugin on redmine.org', 'rating']
 
 repology:
-- ['Repology - Repositories', 'repositories/:projectName', 'platform-support']
+- ['repositories/:projectName', 'Repology - Repositories', 'platform-support']
 
 requires:
-- ['Requires.io', ':service/:user/:repo', 'dependencies']
-- ['Requires.io (branch)', ':service/:user/:repo/:branch', 'dependencies']
+- [':service/:user/:repo', 'Requires.io', 'dependencies']
+- [':service/:user/:repo/:branch', 'Requires.io (branch)', 'dependencies']
 
 resharper:
-- ['JetBrains ReSharper plugins', 'dt/:packageName', 'downloads']
-- ['JetBrains ReSharper plugins Version', 'v/:packageName', 'version']
-- ['JetBrains ReSharper plugins Version (including pre-releases)', 'v/:packageName?include_prereleases', 'version']
+- ['dt/:packageName', 'JetBrains ReSharper plugins', 'downloads']
+- ['v/:packageName', 'JetBrains ReSharper plugins Version', 'version']
+- ['v/:packageName?include_prereleases', 'JetBrains ReSharper plugins Version (including pre-releases)', 'version']
 
 scrutinizer:
-- ['Scrutinizer build (GitHub/Bitbucket)', 'build/:vcs/:user/:repo/:branch?', 'build']
-- ['Scrutinizer build (GitLab)', 'build/gl/:instance/:user/:repo/:branch?', 'build']
-- ['Scrutinizer code quality (GitHub/Bitbucket)', 'quality/:vcs/:user/:repo/:branch?', 'analysis']
-- ['Scrutinizer coverage (GitHub/BitBucket)', 'coverage/:vcs/:user/:repo/:branch?', 'coverage']
-- ['Scrutinizer coverage (GitLab)', 'coverage/gl/:instance/:user/:repo/:branch?', 'coverage']
-- ['Scrutinizer coverage (GitLab)', 'quality/gl/:instance/:user/:repo/:branch?', 'analysis']
+- ['build/:vcs/:user/:repo/:branch?', 'Scrutinizer build (GitHub/Bitbucket)', 'build']
+- ['build/gl/:instance/:user/:repo/:branch?', 'Scrutinizer build (GitLab)', 'build']
+- ['quality/:vcs/:user/:repo/:branch?', 'Scrutinizer code quality (GitHub/Bitbucket)', 'analysis']
+- ['coverage/:vcs/:user/:repo/:branch?', 'Scrutinizer coverage (GitHub/BitBucket)', 'coverage']
+- ['coverage/gl/:instance/:user/:repo/:branch?', 'Scrutinizer coverage (GitLab)', 'coverage']
+- ['quality/gl/:instance/:user/:repo/:branch?', 'Scrutinizer coverage (GitLab)', 'analysis']
 
 security-headers?url=https%3A%2F%2Fshields.io:
-- ['Security Headers', '', 'monitoring']
+- ['', 'Security Headers', 'monitoring']
 
 shippable:
-- ['Shippable', ':projectId', 'build']
-- ['Shippable branch', ':projectId/:branch', 'build']
+- [':projectId', 'Shippable', 'build']
+- [':projectId/:branch', 'Shippable branch', 'build']
 
 snyk:
-- ['Snyk Vulnerabilities for GitHub Repo', 'vulnerabilities/github/:user/:repo', 'analysis']
-- ['Snyk Vulnerabilities for GitHub Repo (Specific Manifest)', 'vulnerabilities/github/:user/:repo/:manifestFilePath', 'analysis']
-- ['Snyk Vulnerabilities for npm package', 'vulnerabilities/npm/:packageName', 'analysis']
-- ['Snyk Vulnerabilities for npm package version', 'vulnerabilities/npm/:packageName', 'analysis']
-- ['Snyk Vulnerabilities for npm scoped package', 'vulnerabilities/npm/:packageName', 'analysis']
+- ['vulnerabilities/github/:user/:repo', 'Snyk Vulnerabilities for GitHub Repo', 'analysis']
+- ['vulnerabilities/github/:user/:repo/:manifestFilePath', 'Snyk Vulnerabilities for GitHub Repo (Specific Manifest)', 'analysis']
+- ['vulnerabilities/npm/:packageName', 'Snyk Vulnerabilities for npm package', 'analysis']
+- ['vulnerabilities/npm/:packageName', 'Snyk Vulnerabilities for npm package version', 'analysis']
+- ['vulnerabilities/npm/:packageName', 'Snyk Vulnerabilities for npm scoped package', 'analysis']
 
 sonar:
-- ['Sonar Coverage', 'coverage/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'coverage']
-- ['Sonar Documented API Density', 'public_documented_api_density/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'analysis']
-- ['Sonar Fortify Security Rating', 'fortify-security-rating/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'analysis']
-- ['Sonar Quality Gate', ':metric/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'analysis']
-- ['Sonar Tech Debt', ':metric/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'analysis']
-- ['Sonar Test Count', ':metric/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'build']
-- ['Sonar Test Execution Time', 'test_execution_time/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'build']
-- ['Sonar Test Success Rate', 'test_success_density/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'build']
-- ['Sonar Tests', 'tests/:component?compact_message&failed_label=failed&passed_label=passed&server=http%3A%2F%2Fsonar.petalslink.com&skipped_label=skipped&sonarVersion=4.2', 'build']
-- ['Sonar Violations (long format)', ':metric/:component?format=long&server=http%3A%2F%2Fsonar.petalslink.com', 'analysis']
-- ['Sonar Violations (short format)', ':metric/:component?format=short&server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'analysis']
+- ['coverage/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'Sonar Coverage', 'coverage']
+- ['public_documented_api_density/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'Sonar Documented API Density', 'analysis']
+- ['fortify-security-rating/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'Sonar Fortify Security Rating', 'analysis']
+- [':metric/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'Sonar Quality Gate', 'analysis']
+- [':metric/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'Sonar Tech Debt', 'analysis']
+- [':metric/:component?server=http%3A%2F%2Fsonar.petalslink.com&sonarVersion=4.2', 'Sonar Test Count', 'build']
+- ['test_execution_time/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'Sonar Test Execution Time', 'build']
+- ['test_success_density/:component?server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'Sonar Test Success Rate', 'build']
+- ['tests/:component?compact_message&failed_label=failed&passed_label=passed&server=http%3A%2F%2Fsonar.petalslink.com&skipped_label=skipped&sonarVersion=4.2', 'Sonar Tests', 'build']
+- [':metric/:component?format=long&server=http%3A%2F%2Fsonar.petalslink.com', 'Sonar Violations (long format)', 'analysis']
+- [':metric/:component?format=short&server=https%3A%2F%2Fsonarcloud.io&sonarVersion=4.2', 'Sonar Violations (short format)', 'analysis']
 
 sourceforge:
-- ['SourceForge', ':interval/:project/:folder', 'downloads']
-- ['Sourceforge Open Tickets', 'open-tickets/:project/:type', 'other']
+- [':interval/:project/:folder', 'SourceForge', 'downloads']
+- ['open-tickets/:project/:type', 'Sourceforge Open Tickets', 'other']
 
 sourcegraph:
-- ['Sourcegraph for Repo Reference Count', 'rrc/:repo', 'other']
+- ['rrc/:repo', 'Sourcegraph for Repo Reference Count', 'other']
 
 spack:
-- ['Spack', 'v/:packageName', 'version']
+- ['v/:packageName', 'Spack', 'version']
 
 spiget:
-- ['Spiget Download Size', 'download-size/:resourceId', 'size']
-- ['Spiget Downloads', 'downloads/:resourceId', 'downloads']
-- ['Spiget Rating', 'rating/:resourceId', 'rating']
-- ['Spiget Stars', 'stars/:resourceId', 'rating']
-- ['Spiget Version', 'version/:resourceId', 'version']
-- ['Spiget tested server versions', 'tested-versions/:resourceId', 'platform-support']
+- ['download-size/:resourceId', 'Spiget Download Size', 'size']
+- ['downloads/:resourceId', 'Spiget Downloads', 'downloads']
+- ['rating/:resourceId', 'Spiget Rating', 'rating']
+- ['stars/:resourceId', 'Spiget Stars', 'rating']
+- ['version/:resourceId', 'Spiget Version', 'version']
+- ['tested-versions/:resourceId', 'Spiget tested server versions', 'platform-support']
 
 stackexchange:
-- ['Stack Exchange monthly questions', ':stackexchangesite/qm/:query', 'chat']
-- ['Stack Exchange questions', ':stackexchangesite/t/:query', 'chat']
-- ['Stack Exchange reputation', ':stackexchangesite/r/:query', 'chat']
+- [':stackexchangesite/qm/:query', 'Stack Exchange monthly questions', 'chat']
+- [':stackexchangesite/t/:query', 'Stack Exchange questions', 'chat']
+- [':stackexchangesite/r/:query', 'Stack Exchange reputation', 'chat']
 
 steam:
-- ['Steam Collection Files', 'collection-files/:collectionId', 'other']
-- ['Steam Downloads', 'downloads/:fileId', 'downloads']
-- ['Steam Favorites', 'favorites/:fileId', 'rating']
-- ['Steam File Size', 'size/:fileId', 'size']
-- ['Steam Release Date', 'release-date/:fileId', 'activity']
-- ['Steam Subscriptions', 'subscriptions/:fileId', 'rating']
-- ['Steam Views', 'views/:fileId', 'other']
+- ['collection-files/:collectionId', 'Steam Collection Files', 'other']
+- ['downloads/:fileId', 'Steam Downloads', 'downloads']
+- ['favorites/:fileId', 'Steam Favorites', 'rating']
+- ['size/:fileId', 'Steam File Size', 'size']
+- ['release-date/:fileId', 'Steam Release Date', 'activity']
+- ['subscriptions/:fileId', 'Steam Subscriptions', 'rating']
+- ['views/:fileId', 'Steam Views', 'other']
 
 swagger:
-- ['Swagger Validator', 'valid/3.0?specUrl=https%3A%2F%2Fraw.githubusercontent.com%2FOAI%2FOpenAPI-Specification%2Fmaster%2Fexamples%2Fv2.0%2Fjson%2Fpetstore-expanded.json', 'other']
+- ['valid/3.0?specUrl=https%3A%2F%2Fraw.githubusercontent.com%2FOAI%2FOpenAPI-Specification%2Fmaster%2Fexamples%2Fv2.0%2Fjson%2Fpetstore-expanded.json', 'Swagger Validator', 'other']
 
 symfony:
-- ['SymfonyInsight Grade', 'i/grade/:projectUuid', 'analysis']
-- ['SymfonyInsight Stars', 'i/stars/:projectUuid', 'analysis']
-- ['SymfonyInsight Violations', 'i/violations/:projectUuid', 'analysis']
+- ['i/grade/:projectUuid', 'SymfonyInsight Grade', 'analysis']
+- ['i/stars/:projectUuid', 'SymfonyInsight Stars', 'analysis']
+- ['i/violations/:projectUuid', 'SymfonyInsight Violations', 'analysis']
 
 teamcity:
-- ['TeamCity Coverage', 'coverage/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'coverage']
-- ['TeamCity Full Build Status', 'build/:verbosity/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'build']
-- ['TeamCity Simple Build Status', 'build/:verbosity/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'build']
+- ['coverage/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'TeamCity Coverage', 'coverage']
+- ['build/:verbosity/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'TeamCity Full Build Status', 'build']
+- ['build/:verbosity/:buildId?server=https%3A%2F%2Fteamcity.jetbrains.com', 'TeamCity Simple Build Status', 'build']
 
 travis:
-- ['PHP from Travis config', 'php-v/:user/:repo/:branch*', 'platform-support']
-- ['Travis (.com)', 'com/:user/:repo', 'build']
-- ['Travis (.com) branch', 'com/:user/:repo/:branch', 'build']
-- ['Travis (.org)', ':user/:repo', 'build']
-- ['Travis (.org) branch', ':user/:repo/:branch', 'build']
+- ['php-v/:user/:repo/:branch*', 'PHP from Travis config', 'platform-support']
+- ['com/:user/:repo', 'Travis (.com)', 'build']
+- ['com/:user/:repo/:branch', 'Travis (.com) branch', 'build']
+- [':user/:repo', 'Travis (.org)', 'build']
+- [':user/:repo/:branch', 'Travis (.org) branch', 'build']
 
 treeware:
-- ['Treeware (Trees)', 'trees/:owner/:packageName', 'other']
+- ['trees/:owner/:packageName', 'Treeware (Trees)', 'other']
 
 twitch:
-- ['Twitch Status', 'status/:user', 'activity']
+- ['status/:user', 'Twitch Status', 'activity']
 
 twitter:
-- ['Twitter Follow', 'follow/:user?label=Follow', 'social']
-- ['Twitter URL', 'url?url=https%3A%2F%2Fshields.io', 'social']
+- ['follow/:user?label=Follow', 'Twitter Follow', 'social']
+- ['url?url=https%3A%2F%2Fshields.io', 'Twitter URL', 'social']
 
 ubuntu:
-- ['Ubuntu package', 'v/:packageName/:series?', 'version']
+- ['v/:packageName/:series?', 'Ubuntu package', 'version']
 
 uptimerobot:
-- ['Uptime Robot ratio (30 days)', 'ratio/:monitorSpecificKey', 'monitoring']
-- ['Uptime Robot ratio (7 days)', 'ratio/7/:monitorSpecificKey', 'monitoring']
-- ['Uptime Robot status', 'status/:monitorSpecificKey', 'monitoring']
+- ['ratio/:monitorSpecificKey', 'Uptime Robot ratio (30 days)', 'monitoring']
+- ['ratio/7/:monitorSpecificKey', 'Uptime Robot ratio (7 days)', 'monitoring']
+- ['status/:monitorSpecificKey', 'Uptime Robot status', 'monitoring']
 
 vaadin-directory:
-- ['Vaadin Directory', ':format/:packageName', 'rating']
-- ['Vaadin Directory', 'release-date/:packageName', 'activity']
-- ['Vaadin Directory', 'status/:packageName', 'other']
-- ['Vaadin Directory', 'v/:packageName', 'version']
+- [':format/:packageName', 'Vaadin Directory', 'rating']
+- ['release-date/:packageName', 'Vaadin Directory', 'activity']
+- ['status/:packageName', 'Vaadin Directory', 'other']
+- ['v/:packageName', 'Vaadin Directory', 'version']
 
 visual-studio-app-center:
-- ['Visual Studio App Center (Minimum) OS Version', 'releases/osver/:owner/:app/:token', 'version']
-- ['Visual Studio App Center Builds', 'builds/:owner/:app/:branch/:token', 'build']
-- ['Visual Studio App Center Releases', 'releases/version/:owner/:app/:token', 'version']
-- ['Visual Studio App Center Size', 'releases/size/:owner/:app/:token', 'size']
+- ['releases/osver/:owner/:app/:token', 'Visual Studio App Center (Minimum) OS Version', 'version']
+- ['builds/:owner/:app/:branch/:token', 'Visual Studio App Center Builds', 'build']
+- ['releases/version/:owner/:app/:token', 'Visual Studio App Center Releases', 'version']
+- ['releases/size/:owner/:app/:token', 'Visual Studio App Center Size', 'size']
 
 visual-studio-marketplace:
-- ['Visual Studio Marketplace Downloads', 'd/:extensionId', 'downloads']
-- ['Visual Studio Marketplace Installs', 'i/:extensionId', 'downloads']
-- ['Visual Studio Marketplace Installs - Azure DevOps Extension', 'azure-devops/installs/:measure/:extensionId', 'downloads']
-- ['Visual Studio Marketplace Rating', 'r/:extensionId', 'rating']
-- ['Visual Studio Marketplace Rating (Stars)', 'stars/:extensionId', 'rating']
-- ['Visual Studio Marketplace Version', 'v/:extensionId', 'version']
+- ['d/:extensionId', 'Visual Studio Marketplace Downloads', 'downloads']
+- ['i/:extensionId', 'Visual Studio Marketplace Installs', 'downloads']
+- ['azure-devops/installs/:measure/:extensionId', 'Visual Studio Marketplace Installs - Azure DevOps Extension', 'downloads']
+- ['r/:extensionId', 'Visual Studio Marketplace Rating', 'rating']
+- ['stars/:extensionId', 'Visual Studio Marketplace Rating (Stars)', 'rating']
+- ['v/:extensionId', 'Visual Studio Marketplace Version', 'version']
 
 w3c-validation:
-- ['W3C Validation', ':parser?preset=HTML%2C%20SVG%201.1%2C%20MathML%203.0&targetUrl=https%3A%2F%2Fvalidator.nu%2F', 'analysis']
+- [':parser?preset=HTML%2C%20SVG%201.1%2C%20MathML%203.0&targetUrl=https%3A%2F%2Fvalidator.nu%2F', 'W3C Validation', 'analysis']
 
 website?down_color=lightgrey&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fshields.io:
-- ['Website', '', 'monitoring']
+- ['', 'Website', 'monitoring']
 
 wercker:
-- ['Wercker Build', 'build/:userName/:applicationName', 'build']
-- ['Wercker Build branch', 'build/:userName/:applicationName/:branch', 'build']
-- ['Wercker CI Run', 'ci/:applicationId/:branch', 'build']
+- ['build/:userName/:applicationName', 'Wercker Build', 'build']
+- ['build/:userName/:applicationName/:branch', 'Wercker Build branch', 'build']
+- ['ci/:applicationId/:branch', 'Wercker CI Run', 'build']
 
 wheelmap:
-- ['Wheelmap', 'a/:nodeId', 'other']
+- ['a/:nodeId', 'Wheelmap', 'other']
 
 wordpress:
-- ['WordPress Plugin Active Installs', 'plugin/installs/:slug', 'downloads']
-- ['WordPress Plugin Downloads', 'plugin/:interval/:slug', 'downloads']
-- ['WordPress Plugin Rating', 'plugin/stars/:slug', 'rating']
-- ['WordPress Plugin Version', 'plugin/v/:slug', 'version']
-- ['WordPress Plugin: Required WP Version', 'plugin/wp-version/:slug', 'platform-support']
-- ['WordPress Plugin: Tested WP Version', 'plugin/tested/:slug', 'platform-support']
-- ['WordPress Theme Active Installs', 'theme/installs/:slug', 'downloads']
-- ['WordPress Theme Downloads', 'theme/:interval/:slug', 'downloads']
-- ['WordPress Theme Rating', 'theme/stars/:slug', 'rating']
-- ['WordPress Theme Version', 'theme/v/:slug', 'version']
+- ['plugin/installs/:slug', 'WordPress Plugin Active Installs', 'downloads']
+- ['plugin/:interval/:slug', 'WordPress Plugin Downloads', 'downloads']
+- ['plugin/stars/:slug', 'WordPress Plugin Rating', 'rating']
+- ['plugin/v/:slug', 'WordPress Plugin Version', 'version']
+- ['plugin/wp-version/:slug', 'WordPress Plugin: Required WP Version', 'platform-support']
+- ['plugin/tested/:slug', 'WordPress Plugin: Tested WP Version', 'platform-support']
+- ['theme/installs/:slug', 'WordPress Theme Active Installs', 'downloads']
+- ['theme/:interval/:slug', 'WordPress Theme Downloads', 'downloads']
+- ['theme/stars/:slug', 'WordPress Theme Rating', 'rating']
+- ['theme/v/:slug', 'WordPress Theme Version', 'version']

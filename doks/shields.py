@@ -25,8 +25,8 @@ def find_shield(shield_key):
             return [source] + items[0]
         k1, *r1 = rest
 
-        for alt, url, category in items:
-            result = [source, alt, url, category]
+        for url, alt, category in items:
+            result = [source, url, alt, category]
             keys = k1.split('/')
 
             if k1 and not all(k in url.split('/') for k in keys):
@@ -74,7 +74,7 @@ def _shield_url(key, source, url, style, variables):
 
 
 def shield_url(key, variables, style=None):
-    source, alt, url, category = find_shield(key)
+    source, url, alt, category = find_shield(key)
     return _shield_url(key, source, url, style, variables), alt
 
 

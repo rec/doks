@@ -64,7 +64,7 @@ def print_re_key(shields):
                 print()
             print('%s:' % root)
             for alt, url, category in sorted(items):
-                print("- ['%s', '%s', '%s']" % (alt, url, category))
+                print("- ['%s', '%s', '%s']" % (url, alt, category))
 
 
 def main():

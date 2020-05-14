@@ -6,8 +6,8 @@ class TestFindShields(unittest.TestCase):
     def test_empty(self):
         expected = [
             ':tenant.myget',
-            'MyGet tenant',
             ':feed/dt/:packageName',
+            'MyGet tenant',
             'downloads',
         ]
         actual = shields.find_shield('')
@@ -15,15 +15,15 @@ class TestFindShields(unittest.TestCase):
 
     def test_github1(self):
         actual = shields.find_shield('github')
-        expected = ['github', 'GitHub', 'license/:user/:repo', 'license']
+        expected = ['github', 'license/:user/:repo', 'GitHub', 'license']
         assert actual == expected
 
     def test_github2(self):
         actual = shields.find_shield('github.last-commit')
         expected = [
             'github',
-            'GitHub last commit',
             'last-commit/:user/:repo',
+            'GitHub last commit',
             'activity',
         ]
         assert actual == expected
@@ -32,8 +32,8 @@ class TestFindShields(unittest.TestCase):
         actual = shields.find_shield('github.release')
         expected = [
             'github',
-            'GitHub release (latest SemVer including pre-releases)',
             'v/release/:user/:repo?include_prereleases&sort=semver',
+            'GitHub release (latest SemVer including pre-releases)',
             'version',
         ]
         assert actual == expected
@@ -42,15 +42,15 @@ class TestFindShields(unittest.TestCase):
         actual = shields.find_shield('github.languages/top')
         expected = [
             'github',
-            'GitHub top language',
             'languages/top/:user/:repo',
+            'GitHub top language',
             'analysis',
         ]
         assert actual == expected
 
     def test_travis(self):
         actual = shields.find_shield('travis..org')
-        expected = ['travis', 'Travis (.org)', ':user/:repo', 'build']
+        expected = ['travis', ':user/:repo', 'Travis (.org)', 'build']
         assert actual == expected
 
 
