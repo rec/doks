@@ -1,4 +1,3 @@
-from setuptools import setup
 import doks
 
 _classifiers = [
@@ -12,7 +11,12 @@ _classifiers = [
     'Topic :: Utilities',
 ]
 
+with open('requirements.txt') as f:
+    REQUIRED = f.read().splitlines()
+
 if __name__ == '__main__':
+    from setuptools import setup
+
     setup(
         name='doks',
         version=doks.__version__,
@@ -25,6 +29,9 @@ if __name__ == '__main__':
         long_description=open('README.rst').read(),
         license='MIT',
         classifiers=_classifiers,
-        keywords=['testing', 'modules'],
-        scripts=['doks.py'],
+        keywords=['documentation'],
+        scripts=['scripts/doks'],
+        packages=['doks'],
+        data_files=[('', ['shields.yml'])],
+        install_requires=REQUIRED,
     )
