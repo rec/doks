@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import safer
 import requests
+import safer
 import yaml
 
 SHIELDS_URL = 'https://shields.io'

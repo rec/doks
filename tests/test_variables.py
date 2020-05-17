@@ -1,6 +1,6 @@
+from doks import variables
 from unittest import TestCase, mock
 import os
-from doks import variables
 
 RESULTS = """\
 origin	git@ONE.com:TWO/THREE.git (fetch)
