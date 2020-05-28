@@ -1,4 +1,4 @@
-from doks import doks
+import doks
 from unittest import TestCase, mock
 import os
 
