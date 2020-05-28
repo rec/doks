@@ -1,2 +1,5 @@
+coverage
 flake8
+impall
 pytest
+readme-renderer
