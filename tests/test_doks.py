@@ -1,4 +1,4 @@
-import doks
+from doks import doks
 from unittest import TestCase, mock
 import os
 
@@ -18,7 +18,6 @@ class TestDoks(TestCase):
 EXPECTED = """\
 Top level docs
 
-***
 API
 ***
 

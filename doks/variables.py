@@ -3,7 +3,7 @@ import re
 import subprocess
 
 ENV_PREFIX = 'DOKS_'
-DEFAULTS = {'vcstype': 'git'}
+DEFAULTS = {'vcstype': 'github'}
 FILL_INS = (('packagename', 'repo'),)
 SUB = {'stderr': subprocess.DEVNULL, 'encoding': 'utf8'}
 
@@ -45,22 +45,25 @@ def env_variables():
 def substitute(variables, url):
     parts = url.split('/')
     missing_parts = []
-    for i, part in enumerate(parts):
+    new_parts = []
+    for part in parts:
         if part.startswith(':'):
             optional = part.endswith('*')
             part = part[1:-1] if optional else part[1:]
             replacement = variables.get(part.lower())
             if replacement:
-                parts[i] = replacement
+                new_parts.append(replacement)
             elif not optional:
                 missing_parts.append(part)
+        else:
+            new_parts.append(part)
 
     if missing_parts:
         parts = ', '.join(missing_parts)
         print(variables)
         raise ValueError('Missing variables %s in %s' % (parts, url))
 
-    return '/'.join(parts)
+    return '/'.join(new_parts)
 
 
 def default_variables(path):

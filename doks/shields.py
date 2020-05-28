@@ -1,10 +1,11 @@
 from .variables import substitute
+import os
 import shlex
 import yaml
 
 _SHIELD_DATA = {}
-_URL_ROOT = 'https://shields.io'
-FILE = 'shields.yml'
+_URL_ROOT = 'https://img.shields.io'
+FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'shields.yml')
 
 
 def shield_data():
@@ -99,10 +100,15 @@ def add_shields(lines, variables):
             shield_lines.append(line)
         else:
             in_shield = False
-            for shield in shlex.split(' '.join(shield_lines)):
+            shields = shlex.split(' '.join(shield_lines))
+            yield ' '.join('|doks_%d|' % i for i in range(len(shields)))
+            yield ''
+            for i, shield in enumerate(shields):
                 url, alt = parse_shield(shield, variables)
-                yield '.. image:: ' + url
+                target = url  # FIX
+                yield '.. |doks_%d| image:: %s' % (i, url)
                 yield '   :alt: ' + alt
+                yield '   :target: ' + target
                 yield ''
 
             yield line

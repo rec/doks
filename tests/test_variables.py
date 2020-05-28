@@ -17,7 +17,7 @@ EXPECTED = {
     'repo': 'THREE',
     'user': 'TWO',
     'vcsname': 'ONE',
-    'vcstype': 'git',
+    'vcstype': 'github',
 }
 
 
@@ -39,4 +39,10 @@ class TestVariables(TestCase):
             sub('tests/:user/:repong')
         expected = 'Missing variables repong in tests/:user/:repong'
         actual = m.exception.args[0]
+        assert actual == expected
+
+    def test_optional(self, check_output):
+        sub = variables.substitutor('.')
+        actual = sub('grade/:vcsType/:user/:repo/:branch*')
+        expected = 'grade/github/TWO/THREE'
         assert actual == expected
