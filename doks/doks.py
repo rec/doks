@@ -15,6 +15,21 @@ import sys
 __all__ = ('doks',)
 
 
+def doks(source, target=None):
+    lines = _doks(source)
+    if target:
+        with safer.printer(target) as _print:
+            for line in lines:
+                _print(line)
+    else:
+        for line in lines:
+            print(line)
+
+
+def main():
+    doks(*sys.argv[1:])
+
+
 def _doks(path):
     """Print documentation for a file or module
 
@@ -86,21 +101,6 @@ def _children(parent, names, module_path):
             yield path, value
             if is_type:
                 yield from _children(value, vars(value), path)
-
-
-def doks(source, target=None):
-    lines = _doks(source)
-    if target:
-        with safer.printer(target) as _print:
-            for line in lines:
-                _print(line)
-    else:
-        for line in lines:
-            print(line)
-
-
-def main():
-    doks(*sys.argv[1:])
 
 
 if __name__ == '__main__':
