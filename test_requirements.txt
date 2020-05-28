@@ -1,5 +1,7 @@
+beautifulsoup4
 coverage
 flake8
 impall
 pytest
 readme-renderer
+requests
