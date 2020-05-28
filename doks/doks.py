@@ -1,15 +1,30 @@
 #!/usr/bin/env python3
 """
-``doks``
+📚 doks: Automatically create READMEs from your project 📚
+====================================================================
+
+Reads the comments from your file and puts them into a servicable .rst
+file.
+
+Very suitable for single-file Python libraries that want to keep the code
+and documentation in sync without issues
+
+USAGE
+-------
+
+.. code-block:: bash
+
+    doks my_file.py [README.rst]
 
 """
 from . import shields
 from . import variables
+from readme_renderer import rst
 import datetime
 import impall
 import inspect
+import io
 import os
-import safer
 import sys
 
 __all__ = ('doks',)
@@ -19,17 +34,33 @@ def doks(source, target=None):
     """Print documentation for a file or module
 
     ARGUMENTS
-      path: path to the Python file or module.
+      path
+        path to the Python file or module.
+
+      target
+        path to the output file or ``None``, in which case
+        output is printed to stdout
+
     """
-    lines = _doks(source)
+    lines = '\n'.join(_doks(source))
+    out = io.StringIO()
+    actual = rst.render(lines, out)
+    if actual is None:
+        print('.rst Rendering error!', out.getvalue(), '', sep='\n')
+        lines = lines.splitlines()
+        fmt = '%0{}d:'.format(len(str(1 + len(lines))))
+        for i, line in enumerate(lines):
+            print(fmt % (i + 1), line)
+        sys.exit(-1)
+
     if target:
-        with safer.printer(target) as _print:
-            _print(*lines, sep='\n')
+        with open(target, 'w') as fp:
+            fp.write(lines)
     else:
-        print(*lines, sep='\n')
+        print(lines)
 
 
-def main():
+def _main():
     doks(*sys.argv[1:])
 
 
@@ -77,7 +108,7 @@ def _get_doc(s):
 
 def _header(line, char='-'):
     header = char * len(line)
-    if char in '*#':
+    if char in '#':
         yield header
     yield from (line, header, '')
 
@@ -95,4 +126,4 @@ def _children(parent, names, module_path):
 
 
 if __name__ == '__main__':
-    main()
+    _main()

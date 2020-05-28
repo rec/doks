@@ -2,4 +2,4 @@ from . import doks
 
 
 if __name__ == '__main__':
-    doks.main()
+    doks._main()

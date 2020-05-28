@@ -18,7 +18,6 @@ class TestDoks(TestCase):
 EXPECTED = """\
 Top level docs
 
-***
 API
 ***
 
