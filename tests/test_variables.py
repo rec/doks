@@ -4,7 +4,11 @@ import os
 
 RESULTS = """\
 origin	git@ONE.com:TWO/THREE.git (fetch)
-origin	git@github.com:rec/doks.git (push)"""
+origin	git@github.com:rec/doks.git (push)
+
+# comment
+
+"""
 
 EXPECTED = {
     'bar': 'bing',
@@ -17,14 +21,22 @@ EXPECTED = {
 }
 
 
+@mock.patch.dict(os.environ, {'DOKS_FOO': 'foo', 'DOKS_BAR': 'bing'})
+@mock.patch('subprocess.check_output', return_value=RESULTS)
 class TestVariables(TestCase):
-    @mock.patch.dict(os.environ, {'DOKS_FOO': 'foo', 'DOKS_BAR': 'bing'})
-    @mock.patch('subprocess.check_output', return_value=RESULTS)
     def test_simple(self, check_output):
         actual = variables.default_variables('.')
         assert EXPECTED == actual
 
-    def test_substitute(self):
-        url = 'tests/:user/:repo'
-        actual = variables.substitute(EXPECTED, url)
+    def test_substitute(self, check_output):
+        sub = variables.substitutor('.')
+        actual = sub('tests/:user/:repo')
         assert actual == 'tests/TWO/THREE'
+
+    def test_missing(self, check_output):
+        sub = variables.substitutor('.')
+        with self.assertRaises(ValueError) as m:
+            sub('tests/:user/:repong')
+        expected = 'Missing variables repong in tests/:user/:repong'
+        actual = m.exception.args[0]
+        assert actual == expected

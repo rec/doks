@@ -4,10 +4,11 @@
 
 branch = True
 source =  doks/
+omit = doks/extract_shields.py
 
 [report]
 
-fail_under = 50
+fail_under = 88
 skip_covered = True
 
 exclude_lines =

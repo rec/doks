@@ -1,10 +1,10 @@
-from .extract_shields import FILE
 from .variables import substitute
 import shlex
 import yaml
 
 _SHIELD_DATA = {}
 _URL_ROOT = 'https://shields.io'
+FILE = 'shields.yml'
 
 
 def shield_data():
