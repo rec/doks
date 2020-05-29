@@ -2,21 +2,23 @@
 
 
 def function(a, b, c='hello', **kwargs):
-    """"This is function()."""
+    """This is a function()."""
 
 
-class Class(str):
-    """Here's class"""
+class Class:
+    "This is a class"
 
     def __init__(self, *args, **kwargs):
         """a constructor"""
-        super().__init__(*args, **kwargs)
+        self.args = args
+        self.kwargs = kwargs
 
+    # """before public"""
     def public(self, foo, bar, baz):
         """
         A public method.
 
-        ARGUMENTS:
+        ARGUMENTS
           foo
             a foo
 
