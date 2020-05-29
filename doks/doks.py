@@ -24,7 +24,6 @@ import datetime
 import impall
 import inspect
 import io
-import os
 import sys
 
 __all__ = ('doks',)
@@ -70,16 +69,21 @@ def _timestamp():
 
 def _doks(path):
     module = impall.import_file(path)
-    module_doc = _get_doc(module)
+    module_doc = inspect.getdoc(module) or ''
 
     def_vars = variables.default_variables(path)
-    yield from shields.add_shields(module_doc, def_vars)
+    yield from shields.add_shields(module_doc.splitlines(), def_vars)
     yield ''
     yield from _header('API', '*')
 
     items = getattr(module, '__all__', vars(module))
 
     for path, value in _children(module, items, module.__name__):
+        comment = inspect.getcomments(value)
+        if comment:
+            yield comment
+            yield ''
+
         if isinstance(value, type):
             header = 'Class ``%s``' % path
             char = '='
@@ -87,23 +91,20 @@ def _doks(path):
             header = '``%s%s``' % (path, inspect.signature(value))
             char = '-'
         yield from _header(header, char)
-        yield from ('    ' + i if i.strip() else i for i in _get_doc(value))
+        lines, start = inspect.getsourcelines(value)
+        end = start + len(lines)
+
+        doc = inspect.getdoc(value)
+        if doc:
+            yield from _indent(doc)
         yield ''
 
     yield _DOKS_MSG % _timestamp()
 
 
-def _get_doc(s):
-    lines = (s.__doc__ or '').splitlines()
-    while lines and not lines[-1].strip():
-        lines.pop()
-
-    while lines and not lines[0].strip():
-        lines.pop(0)
-
-    prefix = os.path.commonprefix([i for i in lines if i.strip()])
-    blanks = len(prefix) - len(prefix.lstrip())
-    return [i[blanks:] for i in lines]
+def _indent(s):
+    for line in s.splitlines():
+        yield '    ' + line if line.strip() else line
 
 
 def _header(line, char='-'):
