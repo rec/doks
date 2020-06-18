@@ -8,7 +8,7 @@ omit = doks/extract_shields.py
 
 [report]
 
-fail_under = 88
+fail_under = 80
 skip_covered = True
 
 exclude_lines =
