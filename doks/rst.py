@@ -59,6 +59,11 @@ def header(line, char):
 
 
 def code(value):
+    v = value
+    while v is not None:
+        value = v
+        v = getattr(v, '__wrapped__', None)
+
     file = os.path.relpath(inspect.getfile(value), '.')
 
     lines, begin = inspect.getsourcelines(value)
