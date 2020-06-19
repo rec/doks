@@ -13,6 +13,7 @@ SEPARATORS = {
     'github.com': 'blob/master',
     'gitlab.com': '-/blob/master',
 }
+SECTIONS = '-=~_+*#`\':<>^"'
 
 _GIT_SUFFIX = '.git'
 _SSH_PREFIX = 'git@'
@@ -36,15 +37,13 @@ def render(text):
     return rendered
 
 
-def describe(path, value):
+def describe(path, value, sections):
     if isinstance(value, type):
-        head = f'Class `{path}``'
-        char = '='
+        yield from header(f'Class `{path}``', sections[2])
     else:
         sig = inspect.signature(value)
-        head = f'``{path}{sig}``'
-        char = '-'
-    yield from header(head, char)
+        yield from header(f'``{path}{sig}``', sections[3])
+
     yield code(value)
     yield ''
 
@@ -54,11 +53,8 @@ def describe(path, value):
     yield ''
 
 
-def header(line, char='-'):
-    header = char * len(line)
-    if char in '#':
-        yield header
-    yield from (line, header, '')
+def header(line, char):
+    yield from (line, char * len(line), '')
 
 
 def code(value):
@@ -75,6 +71,19 @@ def code(value):
         msg = MSG.format(**locals())
 
     return f'({msg})'
+
+
+def section_characters(lines):
+    sections = ''
+    pline = ''
+    for line in lines:
+        if line and pline:
+            s = line[0]
+            if s in SECTIONS and s not in sections and len(set(line)) == 1:
+                sections += s
+        pline = line
+
+    return ''.join((sections, *(s for s in SECTIONS if s not in sections)))
 
 
 def indent(s):

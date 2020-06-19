@@ -23,12 +23,12 @@ from . import variables
 import datetime
 import impall
 import inspect
-import sys
+import safer
 
 __all__ = ('doks',)
 
 
-def doks(source, target=None):
+def doks(source, target):
     """Print documentation for a file or module
 
     ARGUMENTS
@@ -40,16 +40,12 @@ def doks(source, target=None):
         output is printed to stdout
 
     """
-    lines = '\n'.join(_doks(source))
-
+    lines = '\n'.join(_doks(source)) + '\n'
     if not rst.render(lines):
-        sys.exit(-1)
+        raise ValueError(f'The .rst code in {source} is malformed')
 
-    if target:
-        with open(target, 'w') as fp:
-            print(lines, file=fp)
-    else:
-        print(lines)
+    with safer.writer(target) as fp:
+        fp.write(lines)
 
 
 def _timestamp():
@@ -61,14 +57,16 @@ def _doks(path):
     module_doc = inspect.getdoc(module) or ''
     def_vars = variables.default_variables(path)
 
-    yield from shields.add_shields(module_doc.splitlines(), def_vars)
+    lines = module_doc.splitlines()
+    sections = rst.section_characters(lines)
+    yield from shields.add_shields(lines, def_vars)
     yield ''
-    yield from rst.header('API', '*')
+    yield from rst.header('API', sections[1])
 
     items = getattr(module, '__all__', vars(module))
 
     for path, value in _children(module, items, module.__name__):
-        yield from rst.describe(path, value)
+        yield from rst.describe(path, value, sections)
 
     yield _DOKS_MSG % _timestamp()
 

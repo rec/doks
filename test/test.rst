@@ -1,31 +1,31 @@
 Top level docs
 
 API
-***
+===
 
 ``test.sample.function(a, b, c='hello', **kwargs)``
----------------------------------------------------
+___________________________________________________
 
 (`test/sample.py, 4-6 <https://github.com/rec/doks/blob/master/test/sample.py#L4-L6>`_)
 
 This is a function().
 
 Class `test.sample.Class``
-==========================
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 (`test/sample.py, 8-37 <https://github.com/rec/doks/blob/master/test/sample.py#L8-L37>`_)
 
 This is a class
 
 ``test.sample.Class.__init__(self, *args, **kwargs)``
------------------------------------------------------
+_____________________________________________________
 
 (`test/sample.py, 11-15 <https://github.com/rec/doks/blob/master/test/sample.py#L11-L15>`_)
 
 a constructor
 
 ``test.sample.Class.public(self, foo, bar, baz)``
--------------------------------------------------
+_________________________________________________
 
 (`test/sample.py, 17-31 <https://github.com/rec/doks/blob/master/test/sample.py#L17-L31>`_)
 
@@ -42,7 +42,7 @@ ARGUMENTS
     no idea
 
 ``test.sample.Class.undocumented(self, foo, bar, baz)``
--------------------------------------------------------
+_______________________________________________________
 
 (`test/sample.py, 32-34 <https://github.com/rec/doks/blob/master/test/sample.py#L32-L34>`_)
 
