@@ -37,12 +37,13 @@ def render(text):
     return rendered
 
 
-def describe(path, value, sections):
+def describe(path, value, sections, is_member):
     if isinstance(value, type):
-        yield from header(f'Class `{path}``', sections[2])
+        line = f'Class `{path}``'
     else:
         sig = inspect.signature(value)
-        yield from header(f'``{path}{sig}``', sections[3])
+        line = f'``{path}{sig}``'
+    yield from header(line, sections[2 + is_member])
 
     yield code(value)
     yield ''

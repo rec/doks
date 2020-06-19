@@ -65,22 +65,22 @@ def _doks(path):
 
     items = getattr(module, '__all__', vars(module))
 
-    for path, value in _children(module, items, module.__name__):
-        yield from rst.describe(path, value, sections)
+    for path, value, is_member in _children(module, items, module.__name__):
+        yield from rst.describe(path, value, sections, is_member)
 
     yield _DOKS_MSG % _timestamp()
 
 
-def _children(parent, names, module_path):
+def _children(parent, names, module_path, is_member=False):
     for name in names:
         if not name.startswith('_') or name.startswith('__'):
             value = getattr(parent, name)
             if callable(value):
                 path = '%s.%s' % (module_path, name)
-                yield path, value
+                yield path, value, is_member
 
                 if isinstance(value, type):
-                    yield from _children(value, vars(value), path)
+                    yield from _children(value, vars(value), path, True)
 
 
 _DOKS_URL = 'https://github.com/rec/doks/'

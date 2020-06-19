@@ -4,7 +4,7 @@ API
 ===
 
 ``test.sample.function(a, b, c='hello', **kwargs)``
-___________________________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 (`test/sample.py, 4-6 <https://github.com/rec/doks/blob/master/test/sample.py#L4-L6>`_)
 
