@@ -1,3 +1,18 @@
+## v0.9.2 - 20/06/20
+
+* Follow wrapped functions to find source
+* Fix sections to be hierarchical
+* Read existing section characters from document
+* Move data from test_doks.py into a text file
+* Temporarily lower code coverage threshold
+* Add links to source code
+* Use inspect.getdoc() (see #2)
+* Add self-link to doks (fix #4)
+* Move the tests directory to test
+* Improve shield and variable handling
+* Use doks to generate doks
+* Move some requirements
+
 ## v0.9.1 - 20/05/28
 
 * First release
