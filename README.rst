@@ -17,7 +17,7 @@ USAGE
 API
 ***
 
-``doks.doks.doks(source, target=None)``_
+``doks.doks.doks(source, target=None)``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 (`doks/doks.py, 32-59 <https://github.com/rec/doks/blob/master/doks/doks.py#L32-L59>`_)
