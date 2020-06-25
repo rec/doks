@@ -63,7 +63,9 @@ def _doks(path):
     yield ''
     yield from rst.header('API', sections[1])
 
-    items = getattr(module, '__all__', vars(module))
+    items = getattr(module, '__all__', None)
+    if not items:
+        raise ValueError('No items in module')
 
     for path, value, is_member in _children(module, items, module.__name__):
         yield from rst.describe(path, value, sections, is_member)

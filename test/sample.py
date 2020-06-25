@@ -1,5 +1,7 @@
 """Top level docs"""
 
+__all__ = 'function', 'Class'
+
 
 def function(a, b, c='hello', **kwargs):
     """This is a function()."""
