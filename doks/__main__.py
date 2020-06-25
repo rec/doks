@@ -1,6 +1,6 @@
-from . import doks
 
 # from . import rst
+from . import doks
 import argparse
 import sys
 import traceback

@@ -1,9 +1,9 @@
 from pathlib import Path
 from readme_renderer import rst
+import configparser
 import inspect
 import io
 import os
-import configparser
 import sys
 
 USE_INDENT = False

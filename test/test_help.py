@@ -1,6 +1,6 @@
+from pathlib import Path
 from readme_renderer import rst
 from unittest import TestCase
-from pathlib import Path
 import io
 
 README_TEXT = (Path(__file__).parents[1] / 'README.rst').read_text()
