@@ -20,6 +20,7 @@ USAGE
 from . import rst
 from . import shields
 from . import variables
+from pathlib import Path
 import datetime
 import impall
 import inspect
@@ -40,12 +41,22 @@ def doks(source, target):
         output is printed to stdout
 
     """
-    lines = '\n'.join(_doks(source)) + '\n'
-    if not rst.render(lines):
+    lines = list(_doks(source))
+    body = '\n'.join(lines) + '\n'
+    if not rst.render(body):
         raise ValueError(f'The .rst code in {source} is malformed')
 
+    p = Path(target)
+    if p.exists() and p.read_text().splitlines()[:-1] == lines[:-1]:
+        print(f'{target} unchanged')
+        return
+
     with safer.writer(target) as fp:
-        fp.write(lines)
+        fp.write(body)
+
+    written = 'rewritten' if p.exists() else 'written'
+    print(f'{target} {written}')
+    return True
 
 
 def _timestamp():
