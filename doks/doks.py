@@ -95,7 +95,7 @@ def _timestamp():
 
 
 def _doks(path):
-    module = impall.import_file(path)
+    module = impall.import_file(str(path))
     module_doc = inspect.getdoc(module) or ''
     def_vars = variables.default_variables(path)
 
