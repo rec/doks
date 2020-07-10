@@ -7,13 +7,14 @@ import traceback
 def main():
     p = argparse.ArgumentParser(description=_DESCRIPTION)
 
-    p.add_argument('source', help=_SOURCE_HELP)
+    p.add_argument('source', default=None, nargs='?', help=_SOURCE_HELP)
     p.add_argument('target', default=None, nargs='?', help=_TARGET_HELP)
+    p.add_argument('--auto', '-a', action='store_true', help=_AUTO_HELP)
     p.add_argument('--verbose', '-v', action='store_true', help=_VERBOSE_HELP)
 
     args = p.parse_args()
     try:
-        doks.doks(args.source, args.target)
+        doks.doks(args.source, args.target, args.auto)
     except Exception as e:
         print(e, file=sys.stderr)
         if args.verbose:
@@ -24,6 +25,7 @@ def main():
 _DESCRIPTION = """Write a .rst document for a single Python file"""
 _SOURCE_HELP = '.py file to create documentation for'
 _TARGET_HELP = '.rst file to write to.  None means stdout'
+_AUTO_HELP = """Automatically guess which files to read and write"""
 _VERBOSE_HELP = """Print more stuff"""
 
 

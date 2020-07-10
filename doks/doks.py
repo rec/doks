@@ -29,18 +29,31 @@ import safer
 __all__ = ('doks',)
 
 
-def doks(source, target):
+def doks(source, target, auto=False):
     """Print documentation for a file or module
 
     ARGUMENTS
-      path
+      source
         path to the Python file or module.
 
       target
         path to the output file or ``None``, in which case
         output is printed to stdout
 
+      auto
+        If true, automatically guess both source and target files
+
     """
+    if source and auto:
+        raise ValueError('Source cannot be set if --auto/-a is used')
+
+    if not (source or auto):
+        raise ValueError('Source must be set if --auto/-a is not used')
+
+    if auto:
+        source = _auto_source()
+        target = 'README.rst'
+
     lines = list(_doks(source))
     body = '\n'.join(lines) + '\n'
     if not rst.render(body):
@@ -57,6 +70,24 @@ def doks(source, target):
     written = 'rewritten' if p.exists() else 'written'
     print(f'{target} {written}')
     return True
+
+
+def _auto_source():
+    eponymous = Path(Path().absolute().stem + '.py')
+    if eponymous.exists():
+        return eponymous
+
+    def accept(p):
+        if p.suffix == '.py' and p.name != 'setup.py':
+            return not (p.name.startswith('test') or p.name.startswith('.'))
+
+    files = sorted(p for p in Path().iterdir() if accept(p))
+    if not files:
+        raise ValueError('No Python files to document')
+    if len(files) > 1:
+        files = ', '.join(str(f) for f in files)
+        raise ValueError(f'Too many possible Python files: {files}')
+    return files[0]
 
 
 def _timestamp():
