@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-📚 doks: Automatically create READMEs from your code 📚
+📚 doks: Automatic READMEs from code 📚
 ====================================================================
 
 Reads the comments from your file and puts them into a servicable .rst
