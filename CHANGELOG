@@ -1,3 +1,10 @@
+## v0.10.0 - 20/07/10
+
+* Show a window around rst errors (fix #8)
+* New --auto flag (fix #10)
+* Don't write timestamp-only changes (fix #9)
+* Fail on empty modules
+
 ## v0.9.3 - 20/06/20
 
 * Add a test for README.rst's sanity
