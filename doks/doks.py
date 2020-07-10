@@ -29,7 +29,7 @@ import safer
 __all__ = ('doks',)
 
 
-def doks(source, target, auto=False):
+def doks(source, target, auto=False, window=rst.ERROR_WINDOW, verbose=False):
     """Print documentation for a file or module
 
     ARGUMENTS
@@ -56,7 +56,7 @@ def doks(source, target, auto=False):
 
     lines = list(_doks(source))
     body = '\n'.join(lines) + '\n'
-    if not rst.render(body):
+    if not rst.render(body, window):
         raise ValueError(f'The .rst code in {source} is malformed')
 
     p = Path(target)
