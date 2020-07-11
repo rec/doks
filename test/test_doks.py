@@ -1,8 +1,8 @@
 from doks import doks
 from pathlib import Path
-from tdir import tdir, tdec
 from unittest import TestCase, mock
 import os
+import tdir
 
 SAMPLE_FILE = os.path.join(os.path.dirname(__file__), 'sample.py')
 TIMESTAMP = '2020-05-28T16:26:07.629835'
@@ -30,16 +30,16 @@ class TestDoks(TestCase):
             assert not doks.doks(SAMPLE_FILE, out)
             assert out_lines == out.read_text().splitlines()
 
-    @tdec('setup.py', 'test.py', 'result.py')
+    @tdir('setup.py', 'test.py', 'result.py')
     def test_auto1(self):
         assert doks._auto_source() == Path('result.py')
 
-    @tdec(fancy=('fancy.py', 'test.py', 'foo.py'))
+    @tdir(fancy=('fancy.py', 'test.py', 'foo.py'))
     def test_auto2(self):
         os.chdir('fancy')
         assert doks._auto_source() == Path('fancy.py')
 
-    @tdec(fancy=('funny.py', 'test.py', 'foo.py'))
+    @tdir(fancy=('funny.py', 'test.py', 'foo.py'))
     def test_auto3(self):
         os.chdir('fancy')
         with self.assertRaises(ValueError) as m:
@@ -47,7 +47,7 @@ class TestDoks(TestCase):
         expected = 'Too many possible Python files: foo.py, funny.py'
         assert m.exception.args[0] == expected
 
-    @tdec('test_all.py', 'test_none.py', 'setup.py')
+    @tdir('test_all.py', 'test_none.py', 'setup.py')
     def test_auto4(self):
         with self.assertRaises(ValueError) as m:
             doks._auto_source()
