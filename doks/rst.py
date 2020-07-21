@@ -49,20 +49,21 @@ def render(text, window=ERROR_WINDOW):
 
 
 def describe(path, value, sections, is_member):
-    if isinstance(value, type):
-        line = f'Class `{path}``'
-    else:
-        sig = inspect.signature(value)
-        line = f'``{path}{sig}``'
-    yield from header(line, sections[2 + is_member])
-
-    yield code(value)
-    yield ''
-
     doc = inspect.getdoc(value)
     if doc:
+        if isinstance(value, type):
+            line = f'Class ``{path}``'
+        else:
+            sig = inspect.signature(value)
+            line = f'``{path}{sig}``'
+        yield from header(line, sections[2 + is_member])
+
+        yield code(value)
+        yield ''
+
+        doc = inspect.getdoc(value)
         yield from indent(doc)
-    yield ''
+        yield ''
 
 
 def header(line, char):
