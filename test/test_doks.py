@@ -20,7 +20,7 @@ class TestDoks(TestCase):
         assert actual == EXPECTED
 
     def test_no_change(self):
-        with tdir(cwd=False) as td:
+        with tdir(chdir=False) as td:
             out = td / 'test.rst'
             assert doks.doks(SAMPLE_FILE, out)
 
