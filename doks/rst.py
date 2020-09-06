@@ -50,7 +50,8 @@ def render(text, window=ERROR_WINDOW):
 
 def describe(path, value, sections, is_member):
     doc = inspect.getdoc(value)
-    if doc:
+
+    if doc and hasattr(value, '__doc__'):
         if isinstance(value, type):
             line = f'Class ``{path}``'
         else:
@@ -61,7 +62,6 @@ def describe(path, value, sections, is_member):
         yield code(value)
         yield ''
 
-        doc = inspect.getdoc(value)
         yield from indent(doc)
         yield ''
 

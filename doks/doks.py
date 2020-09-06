@@ -95,9 +95,10 @@ def _timestamp():
 
 
 def _doks(path):
-    module = impall.import_file(str(path))
-    module = getattr(module, '_clod_wrapped', module)
-    module = getattr(module, '_DOKS', module)
+    m = module = impall.import_file(str(path))
+    module = getattr(module, '_xmod_wrapped', module)
+    original = module is not m and m._xmod_extension
+
     module_doc = inspect.getdoc(module) or ''
     def_vars = variables.default_variables(path)
 
@@ -111,8 +112,10 @@ def _doks(path):
     if not items:
         raise ValueError('No items in module')
 
-    for path, value, is_member in _children(module, items, module.__name__):
-        yield from rst.describe(path, value, sections, is_member)
+    for vpath, value, is_member in _children(module, items, module.__name__):
+        if value is original:
+            vpath = str(path)  # WRONG
+        yield from rst.describe(vpath, value, sections, is_member)
 
     yield _DOKS_MSG % _timestamp()
 
