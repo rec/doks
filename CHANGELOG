@@ -1,3 +1,7 @@
+## v0.10.2 - 20/10/07
+
+* Add shields.yml to MANIFEST.in
+
 ## v0.10.1 - 20/09/06
 
 * Improve robustness, check error cases
