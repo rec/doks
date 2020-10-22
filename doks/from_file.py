@@ -6,16 +6,16 @@ import inspect
 
 
 def from_file(path):
-    m = module = impall.import_file(str(path))
-    module = getattr(module, '_xmod_wrapped', module)
+    m = impall.import_file(str(path))
+    module = getattr(m, '_xmod_wrapped', m)
     original = module is not m and m._xmod_extension
 
     module_doc = inspect.getdoc(module) or ''
-    def_vars = variables.default_variables(path)
 
     lines = module_doc.splitlines()
     sections = rst.section_characters(lines)
-    yield from shields.add_shields(lines, def_vars)
+
+    yield from shields.add_shields(lines, variables.default_variables(path))
     yield ''
     yield from rst.header('API', sections[1])
 

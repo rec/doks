@@ -17,6 +17,7 @@ USAGE
     doks my_file.py [README.rst]
 
 """
+from . from_command import from_command
 from . from_file import from_file
 from . import rst
 from pathlib import Path
@@ -60,7 +61,8 @@ def doks(
     elif not source:
         raise ValueError('Source must be set if --auto/-a is not used')
 
-    lines = list(_from_command(source) if command else from_file(source))
+    reader = from_command if command else from_file
+    lines = list(reader(source))
     lines.append(_DOKS_MSG % _timestamp())
     body = '\n'.join(lines) + '\n'
     if not rst.render(body, window):
@@ -99,11 +101,6 @@ def _auto_source():
 
 def _timestamp():
     return datetime.datetime.now().isoformat()
-
-
-def _from_command(path):
-    if False:
-        yield None
 
 
 _DOKS_URL = 'https://github.com/rec/doks/'

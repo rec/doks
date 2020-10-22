@@ -10,16 +10,16 @@ class TestFindShields(unittest.TestCase):
             'MyGet tenant',
             'downloads',
         ]
-        actual = shields.find_shield('')
+        actual = shields._find_shield('')
         assert actual == expected
 
     def test_github1(self):
-        actual = shields.find_shield('github')
+        actual = shields._find_shield('github')
         expected = ['github', 'license/:user/:repo', 'GitHub', 'license']
         assert actual == expected
 
     def test_github2(self):
-        actual = shields.find_shield('github.last-commit')
+        actual = shields._find_shield('github.last-commit')
         expected = [
             'github',
             'last-commit/:user/:repo',
@@ -29,7 +29,7 @@ class TestFindShields(unittest.TestCase):
         assert actual == expected
 
     def test_github3(self):
-        actual = shields.find_shield('github.release')
+        actual = shields._find_shield('github.release')
         expected = [
             'github',
             'v/release/:user/:repo?include_prereleases&sort=semver',
@@ -39,7 +39,7 @@ class TestFindShields(unittest.TestCase):
         assert actual == expected
 
     def test_github4(self):
-        actual = shields.find_shield('github.languages/top')
+        actual = shields._find_shield('github.languages/top')
         expected = [
             'github',
             'languages/top/:user/:repo',
@@ -49,7 +49,7 @@ class TestFindShields(unittest.TestCase):
         assert actual == expected
 
     def test_travis(self):
-        actual = shields.find_shield('travis.org')
+        actual = shields._find_shield('travis.org')
         expected = ['travis', ':user/:repo', 'Travis (.org)', 'build']
         assert actual == expected
 
@@ -66,17 +66,17 @@ _STYLE = {'color': 'FF00FF', 'label': 'blah', 'style': 'plastic'}
 
 class TestShieldURL(unittest.TestCase):
     def test_github2(self):
-        actual = shields.shield_url('github.last-commit', _VARS)
+        actual = shields._shield_url('github.last-commit', _VARS)
         expected = 'https://img.shields.io/github/last-commit/rec/doks'
         assert actual == (expected, 'GitHub last commit')
 
     def test_travis(self):
-        actual = shields.shield_url('travis.org', _VARS)
+        actual = shields._shield_url('travis.org', _VARS)
         expected = ('https://img.shields.io/travis/rec/doks', 'Travis (.org)')
         assert actual == expected
 
     def test_travis2(self):
-        actual = shields.shield_url('travis.org', _VARS, _STYLE)[0]
+        actual = shields._shield_url('travis.org', _VARS, _STYLE)[0]
         expected = (
             'https://img.shields.io/travis/rec/doks'
             '?color=FF00FF&label=blah&style=plastic'
