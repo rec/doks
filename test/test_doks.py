@@ -1,4 +1,5 @@
 from doks import doks
+from doks.from_file import from_file
 from pathlib import Path
 from unittest import TestCase, mock
 import os
@@ -7,7 +8,7 @@ import tdir
 SAMPLE_FILE = os.path.join(os.path.dirname(__file__), 'sample.py')
 TIMESTAMP = '2020-05-28T16:26:07.629835'
 RESULTS_FILE = Path(__file__).parent / 'test.rst'
-EXPECTED = RESULTS_FILE.read_text().splitlines()
+EXPECTED = RESULTS_FILE.read_text().splitlines()[:-1]
 
 
 class TestDoks(TestCase):
@@ -15,7 +16,7 @@ class TestDoks(TestCase):
 
     @mock.patch('doks.doks._timestamp', return_value=TIMESTAMP)
     def test_full(self, _timestamp):
-        actual = list(doks._doks(SAMPLE_FILE))
+        actual = list(from_file(SAMPLE_FILE))
         print(*actual, sep='\n')
         assert actual == EXPECTED
 
@@ -25,7 +26,7 @@ class TestDoks(TestCase):
             assert doks.doks(SAMPLE_FILE, out)
 
             out_lines = out.read_text().splitlines()
-            assert out_lines[:-1] == EXPECTED[:-1]
+            assert out_lines[:-1] == EXPECTED
 
             assert not doks.doks(SAMPLE_FILE, out)
             assert out_lines == out.read_text().splitlines()

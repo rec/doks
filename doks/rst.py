@@ -71,10 +71,11 @@ def header(line, char):
 
 
 def code(value):
-    v = value
-    while v is not None:
-        value = v
-        v = getattr(v, '__wrapped__', None)
+    while True:
+        v = value
+        value = getattr(v, '__wrapped__', getattr(v, 'func', v))
+        if v is value:
+            break
 
     file = os.path.relpath(inspect.getfile(value), '.')
 

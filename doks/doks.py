@@ -17,44 +17,51 @@ USAGE
     doks my_file.py [README.rst]
 
 """
+from . from_file import from_file
 from . import rst
-from . import shields
-from . import variables
 from pathlib import Path
 import datetime
-import impall
-import inspect
 import safer
+
+TARGET = 'README.rst'
 
 __all__ = ('doks',)
 
 
-def doks(source, target, auto=False, window=rst.ERROR_WINDOW, verbose=False):
+def doks(
+        source,
+        target=TARGET,
+        auto=False,
+        command=False,
+        window=rst.ERROR_WINDOW,
+        verbose=False
+):
     """Print documentation for a file or module
 
     ARGUMENTS
       source
         path to the Python file or module.
 
+      auto
+        If true, automatically guess both source and target files
+
+      command
+        If true, use command line help from executing source file
+
       target
         path to the output file or ``None``, in which case
         output is printed to stdout
 
-      auto
-        If true, automatically guess both source and target files
-
     """
-    if source and auto:
-        raise ValueError('Source cannot be set if --auto/-a is used')
-
-    if not (source or auto):
+    if auto:
+        if source:
+            raise ValueError('Source cannot be set if --auto/-a is used')
+        source = _auto_source()
+    elif not source:
         raise ValueError('Source must be set if --auto/-a is not used')
 
-    if auto:
-        source = _auto_source()
-        target = 'README.rst'
-
-    lines = list(_doks(source))
+    lines = list(_from_command(source) if command else from_file(source))
+    lines.append(_DOKS_MSG % _timestamp())
     body = '\n'.join(lines) + '\n'
     if not rst.render(body, window):
         raise ValueError(f'The .rst code in {source} is malformed')
@@ -94,42 +101,9 @@ def _timestamp():
     return datetime.datetime.now().isoformat()
 
 
-def _doks(path):
-    m = module = impall.import_file(str(path))
-    module = getattr(module, '_xmod_wrapped', module)
-    original = module is not m and m._xmod_extension
-
-    module_doc = inspect.getdoc(module) or ''
-    def_vars = variables.default_variables(path)
-
-    lines = module_doc.splitlines()
-    sections = rst.section_characters(lines)
-    yield from shields.add_shields(lines, def_vars)
-    yield ''
-    yield from rst.header('API', sections[1])
-
-    items = getattr(module, '__all__', None)
-    if not items:
-        raise ValueError('No items in module')
-
-    for vpath, value, is_member in _children(module, items, module.__name__):
-        if value is original:
-            vpath = str(path)  # WRONG
-        yield from rst.describe(vpath, value, sections, is_member)
-
-    yield _DOKS_MSG % _timestamp()
-
-
-def _children(parent, names, module_path, is_member=False):
-    for name in names:
-        if not name.startswith('_') or name.startswith('__'):
-            value = getattr(parent, name)
-            if callable(value):
-                path = '%s.%s' % (module_path, name)
-                yield path, value, is_member
-
-                if isinstance(value, type):
-                    yield from _children(value, vars(value), path, True)
+def _from_command(path):
+    if False:
+        yield None
 
 
 _DOKS_URL = 'https://github.com/rec/doks/'
