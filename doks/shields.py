@@ -1,4 +1,4 @@
-from .variables import substitute
+from .variables import default_variables, substitute
 import os
 import shlex
 import yaml
@@ -11,7 +11,11 @@ FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'shields.yml')
 PREFIX = '.. doks-shield'
 
 
-def add_shields(lines, variables):
+def add_shields(lines, path):
+    yield from _add_shields(lines, default_variables(path))
+
+
+def _add_shields(lines, variables):
     shield_lines = []
     in_shield = False
     for line in lines:

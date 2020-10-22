@@ -1,6 +1,5 @@
 from . import rst
 from . import shields
-from . import variables
 import impall
 import inspect
 
@@ -15,7 +14,7 @@ def from_file(path):
     lines = module_doc.splitlines()
     sections = rst.section_characters(lines)
 
-    yield from shields.add_shields(lines, variables.default_variables(path))
+    yield from shields.add_shields(lines, path)
     yield ''
     yield from rst.header('API', sections[1])
 

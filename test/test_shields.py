@@ -86,7 +86,7 @@ class TestShieldURL(unittest.TestCase):
 
 class TestAddShields(unittest.TestCase):
     def test_add(self):
-        actual = '\n'.join(shields.add_shields(LINES.splitlines(), _VARS))
+        actual = '\n'.join(shields._add_shields(LINES.splitlines(), _VARS))
         print(actual)
         assert actual == EXPECTED
 
