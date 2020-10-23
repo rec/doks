@@ -3,7 +3,7 @@ import os
 import shlex
 import yaml
 
-__all__ = 'add_shields',
+__all__ = ('add_shields',)
 
 _SHIELD_DATA = {}
 _URL_ROOT = 'https://img.shields.io'

@@ -17,9 +17,9 @@ USAGE
     doks my_file.py [README.rst]
 
 """
-from . from_command import from_command
-from . from_file import from_file
 from . import rst
+from .from_command import from_command
+from .from_file import from_file
 from pathlib import Path
 import datetime
 import safer
@@ -30,12 +30,12 @@ __all__ = ('doks',)
 
 
 def doks(
-        source,
-        target=TARGET,
-        auto=False,
-        command=False,
-        window=rst.ERROR_WINDOW,
-        verbose=False
+    source,
+    target=TARGET,
+    auto=False,
+    command=False,
+    window=rst.ERROR_WINDOW,
+    verbose=False,
 ):
     """Print documentation for a file or module
 
