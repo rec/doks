@@ -24,7 +24,7 @@ def from_file(path):
 
     for vpath, value, is_member in _children(module, items, module.__name__):
         if value is original:
-            vpath = str(path)  # WRONG
+            vpath = str(path)  # WRONG - why did I write this?
         yield from rst.describe(vpath, value, sections, is_member)
 
 

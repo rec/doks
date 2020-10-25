@@ -1,0 +1,13 @@
+optional arguments:
+
+  -h, --help            show this help message and exit
+
+  --auto, -a            Automatically guess which files to read and write
+
+  --command, -c         Use command line help from executing source instead
+
+  --verbose, -v         Print more stuff
+
+  --window WINDOW, -w WINDOW
+                        How many lines around an RST error to print (0 means
+                        "print everything")
