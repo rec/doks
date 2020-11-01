@@ -1,4 +1,5 @@
 from . import rst
+from pathlib import Path
 import re
 import subprocess
 
@@ -7,10 +8,12 @@ USAGE = 'usage: '
 
 def from_command(path):
     try:
-        results = subprocess.check_output((str(path), '-h'))
+        output = subprocess.check_output((path, '-h'))
     except Exception:
-        results = subprocess.check_output(('python', str(path), '-h'))
-    yield from _from_command(path.name, results.decode().splitlines())
+        output = subprocess.check_output(('python', path, '-h'))
+
+    lines = output.decode().splitlines()
+    yield from _from_command(Path(path).name, lines)
 
 
 def _arguments(title, *args):
