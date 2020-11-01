@@ -2,16 +2,16 @@ from doks import from_command
 from pathlib import Path
 from unittest import TestCase
 
-RESULT_FILE = Path(__file__).parent / 'results.rst'
-HELP_FILE = Path(__file__).parent / 'help-output.txt'
-ARGUMENTS = Path(__file__).parent / 'arguments.txt'
+DOKS_HELP = Path(__file__).parent / 'doks-help.txt'
+DOKS_OUTPUT = DOKS_HELP.read_text().splitlines()
+DOKS_RESULTS = Path(__file__).parent / 'doks-results.rst'
 
-HELP_OUTPUT = HELP_FILE.read_text().splitlines()
+ARGUMENTS = Path(__file__).parent / 'arguments.txt'
 
 
 class TestArguments(TestCase):
     def test_arguments(self):
-        args = HELP_OUTPUT[-8:]
+        args = DOKS_OUTPUT[-8:]
         assert args[0] == 'optional arguments:'
 
         actual = list(from_command._argument(args))
@@ -21,14 +21,14 @@ class TestArguments(TestCase):
 
 class TestSections(TestCase):
     def test_sections(self):
-        actual = list(from_command._sections(HELP_OUTPUT))
+        actual = list(from_command._sections(DOKS_OUTPUT))
         assert actual == EXPECTED_SECTIONS
 
 
 class TestFromCommand(TestCase):
     def test_from_command(self):
-        actual = list(from_command._from_command('doks', HELP_OUTPUT))
-        expected = RESULT_FILE.read_text().splitlines()
+        actual = list(from_command._from_command('doks', DOKS_OUTPUT))
+        expected = DOKS_RESULTS.read_text().splitlines()
         assert actual == expected
 
 
