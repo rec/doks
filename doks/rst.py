@@ -1,6 +1,7 @@
 from pathlib import Path
 from readme_renderer import rst
 import configparser
+import functools
 import inspect
 import io
 import os
@@ -49,21 +50,29 @@ def render(text, window=ERROR_WINDOW):
 
 
 def describe(path, value, sections, is_member):
+    if isinstance(value, functools.partial):
+        yield from header(path, sections[2 + is_member])
+        _, args = str(value).split('>', maxsplit=1)
+        name = value.func.__name__
+        yield f'A partial function ``functools.partial({name}{args})``'
+        return
+
     doc = inspect.getdoc(value)
+    if not (doc and hasattr(value, '__doc__')):
+        return
 
-    if doc and hasattr(value, '__doc__'):
-        if isinstance(value, type):
-            line = f'Class ``{path}``'
-        else:
-            sig = inspect.signature(value)
-            line = f'``{path}{sig}``'
-        yield from header(line, sections[2 + is_member])
+    if isinstance(value, type):
+        line = f'Class ``{path}``'
+    else:
+        sig = inspect.signature(value)
+        line = f'``{path}{sig}``'
+    yield from header(line, sections[2 + is_member])
 
-        yield code(value)
-        yield ''
+    yield code(value)
+    yield ''
 
-        yield from indent(doc)
-        yield ''
+    yield from indent(doc)
+    yield ''
 
 
 def header(line, char):
@@ -73,7 +82,7 @@ def header(line, char):
 def code(value):
     while True:
         v = value
-        value = getattr(v, '__wrapped__', getattr(v, 'func', v))
+        value = getattr(v, '__wrapped__', v)
         if v is value:
             break
 
