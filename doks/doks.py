@@ -24,14 +24,14 @@ from pathlib import Path
 import datetime
 import safer
 
-TARGET = 'README.rst'
+README = 'README.rst'
 
 __all__ = ('doks',)
 
 
 def doks(
-    source,
-    target=TARGET,
+    source=None,
+    target=None,
     auto=False,
     command=False,
     window=rst.ERROR_WINDOW,
@@ -58,6 +58,8 @@ def doks(
         if source:
             raise ValueError('Source cannot be set if --auto/-a is used')
         source = _auto_source()
+        target = target or README
+
     elif not source:
         raise ValueError('Source must be set if --auto/-a is not used')
 
@@ -67,6 +69,10 @@ def doks(
     body = '\n'.join(lines) + '\n'
     if not rst.render(body, window):
         raise ValueError(f'The .rst code in {source} is malformed')
+
+    if not target:
+        print(body)
+        return True
 
     p = Path(target)
     if p.exists() and p.read_text().splitlines()[:-1] == lines[:-1]:
