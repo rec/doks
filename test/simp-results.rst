@@ -1,0 +1,41 @@
+simp
+----
+
+Usage
+=====
+
+.. code-block:: bash
+
+       simp [-h] [--commit] [--dry_run] [--fail] [targets [targets ...]]
+
+Description
+===========
+
+Sort the import directives in Python files, excluding __future__.
+
+Positional arguments
+====================
+
+``targets``
+  One or more Python files or directories with Python files.
+  Without arguments, runs simp on the current directory.
+
+Optional arguments
+==================
+
+``-h``, ``--help``
+  Show this help message and exit
+
+``--commit``, ``-c   Git commit the changes``
+
+``--dry_run``, ``-d  If set``, ``do not make the changes to the Python files``, ``but just``
+  list the diffs.
+
+``--fail``, ``-f``
+  If set, the program fails if any changes need to be made. This
+  is useful for a commit hook to check if all imports are
+  sorted.
+
+I wanted to sort my Python includes with no fuss. ``simp`` finds the first
+block of unindented import statements, and sorts them. Any comments between
+import lines bubble up to the top in their original order.

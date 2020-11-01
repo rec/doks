@@ -6,6 +6,10 @@ DOKS_HELP = Path(__file__).parent / 'doks-help.txt'
 DOKS_OUTPUT = DOKS_HELP.read_text().splitlines()
 DOKS_RESULTS = Path(__file__).parent / 'doks-results.rst'
 
+SIMP_HELP = Path(__file__).parent / 'simp-help.txt'
+SIMP_OUTPUT = SIMP_HELP.read_text().splitlines()
+SIMP_RESULTS = Path(__file__).parent / 'simp-results.rst'
+
 ARGUMENTS = Path(__file__).parent / 'arguments.txt'
 
 
@@ -26,9 +30,20 @@ class TestSections(TestCase):
 
 
 class TestFromCommand(TestCase):
-    def test_from_command(self):
+    def test_doks(self):
         actual = list(from_command._from_command('doks', DOKS_OUTPUT))
+        if False:
+            DOKS_RESULTS.write_text('\n'.join(actual) + '\n')
+
         expected = DOKS_RESULTS.read_text().splitlines()
+        assert actual == expected
+
+    def test_simp(self):
+        actual = list(from_command._from_command('simp', SIMP_OUTPUT))
+        if False:
+            SIMP_RESULTS.write_text('\n'.join(actual) + '\n')
+
+        expected = SIMP_RESULTS.read_text().splitlines()
         assert actual == expected
 
 
