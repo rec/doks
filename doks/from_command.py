@@ -45,7 +45,7 @@ def _arguments(title, *args):
             in_doc = False
 
             for part in re.split(r'(\S+)', a):
-                if len(part) > 4 and part.isspace():
+                if len(part) > 1 and part.isspace():
                     in_doc = True
                 else:
                     (doc if in_doc else flags).append(part)

@@ -26,9 +26,11 @@ Optional arguments
 ``-h``, ``--help``
   Show this help message and exit
 
-``--commit``, ``-c   Git commit the changes``
+``--commit``, ``-c``
+  Git commit the changes
 
-``--dry_run``, ``-d  If set``, ``do not make the changes to the Python files``, ``but just``
+``--dry_run``, ``-d``
+  If set, do not make the changes to the Python files, but just
   list the diffs.
 
 ``--fail``, ``-f``
