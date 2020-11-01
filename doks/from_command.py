@@ -78,6 +78,8 @@ def _from_command(name, lines):
 
     if rest:
         epilog, = rest
+        yield ''
+        yield from _header('Comments')
         yield from epilog
 
 

@@ -38,6 +38,10 @@ Optional arguments
   is useful for a commit hook to check if all imports are
   sorted.
 
+
+Comments
+========
+
 I wanted to sort my Python includes with no fuss. ``simp`` finds the first
 block of unindented import statements, and sorts them. Any comments between
 import lines bubble up to the top in their original order.
