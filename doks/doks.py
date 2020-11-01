@@ -34,6 +34,7 @@ def doks(
     target=None,
     auto=False,
     command=False,
+    force=False,
     window=rst.ERROR_WINDOW,
     verbose=False,
 ):
@@ -49,15 +50,16 @@ def doks(
       command
         If true, use command line help from executing source file
 
+      force
+        If true, write .rst documentation even if it is malformed
+
       target
         path to the output file or ``None``, in which case
         output is printed to stdout
 
     """
     if auto:
-        if source:
-            raise ValueError('Source cannot be set if --auto/-a is used')
-        source = _auto_source()
+        source = source or _auto_source()
         target = target or README
 
     elif not source:
@@ -65,9 +67,12 @@ def doks(
 
     reader = from_command if command else from_file
     lines = list(reader(source))
+    if lines and lines[-1]:
+        lines.append('')
+
     lines.append(_DOKS_MSG % _timestamp())
     body = '\n'.join(lines) + '\n'
-    if not rst.render(body, window):
+    if not (rst.render(body, window) or force):
         raise ValueError(f'The .rst code in {source} is malformed')
 
     if not target:

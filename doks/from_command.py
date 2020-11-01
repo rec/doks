@@ -64,7 +64,7 @@ def _from_command(name, lines):
     yield from _header(name, 0)
 
     assert usage[0].startswith(USAGE)
-    usage[0] = ' ' * len(USAGE) + usage[0][len(USAGE):]
+    usage[0] = ' ' * len(USAGE) + usage[0][len(USAGE) :]
 
     yield from _header('Usage')
     yield from ('.. code-block:: bash', '')
@@ -77,7 +77,7 @@ def _from_command(name, lines):
     yield from _arguments(*opt)
 
     if rest:
-        epilog, = rest
+        (epilog,) = rest
         yield ''
         yield from _header('Comments')
         yield from epilog
