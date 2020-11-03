@@ -35,7 +35,7 @@ def doks(
     auto=False,
     command=False,
     force=False,
-    window=rst.ERROR_WINDOW,
+    window=None,
     verbose=False,
 ):
     """Print documentation for a file or module
@@ -64,6 +64,9 @@ def doks(
 
     elif not source:
         raise ValueError('Source must be set if --auto/-a is not used')
+
+    if window is None:
+        window = rst.ERROR_WINDOW
 
     reader = from_command if command else from_file
     lines = list(reader(source))

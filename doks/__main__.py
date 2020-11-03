@@ -1,13 +1,15 @@
 from . import doks
-from . import rst
+from pathlib import Path
 import argparse
 import sys
+import toml
 import traceback
+
+PYP = Path('pyproject.toml')
 
 
 def main():
     p = argparse.ArgumentParser(description=_DESCRIPTION)
-    ew = rst.ERROR_WINDOW
 
     p.add_argument('source', default=None, nargs='?', help=_SOURCE_HELP)
     p.add_argument('target', default=None, nargs='?', help=_TARGET_HELP)
@@ -15,11 +17,27 @@ def main():
     p.add_argument('--command', '-c', action='store_true', help=_COMMAND_HELP)
     p.add_argument('--force', '-f', action='store_true', help=_FORCE_HELP)
     p.add_argument('--verbose', '-v', action='store_true', help=_VERBOSE_HELP)
-    p.add_argument('--window', '-w', type=int, default=ew, help=_WINDOW_HELP)
+    p.add_argument('--window', '-w', help=_WINDOW_HELP)
 
-    args = p.parse_args()
+    args = vars(p.parse_args())
+
+    if PYP.exists():
+        project = toml.load(PYP.open())
+        project = project.get('tool', {}).get('doks', {})
+    else:
+        project = {}
+
+    bad_project = set(project) - set(args)
+    if bad_project:
+        print('Do not understand values in', PYP, ':', *sorted(bad_project))
+        project = {k: v for k, v in project.items() if k in args}
+
+    for k, v in args.items():
+        if not (k in project or v in (False, None)):
+            project[k] = v
+
     try:
-        doks.doks(**vars(args))
+        doks.doks(**project)
     except Exception as e:
         print(e, file=sys.stderr)
         if args.verbose:
