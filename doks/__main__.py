@@ -29,7 +29,8 @@ def main():
 
     bad_project = set(project) - set(args)
     if bad_project:
-        print('Do not understand values in', PYP, ':', *sorted(bad_project))
+        bp = sorted(bad_project)
+        print('Do not understand values in', PYP, ':', *bp, file=sys.stderr)
         project = {k: v for k, v in project.items() if k in args}
 
     for k, v in args.items():

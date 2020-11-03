@@ -33,23 +33,23 @@ class TestDoks(TestCase):
 
     @tdir('setup.py', 'test.py', 'result.py')
     def test_auto1(self):
-        assert doks._auto_source() == Path('result.py')
+        assert doks._guess_source() == Path('result.py')
 
     @tdir(fancy=('fancy.py', 'test.py', 'foo.py'))
     def test_auto2(self):
         os.chdir('fancy')
-        assert doks._auto_source() == Path('fancy.py')
+        assert doks._guess_source() == Path('fancy.py')
 
     @tdir(fancy=('funny.py', 'test.py', 'foo.py'))
     def test_auto3(self):
         os.chdir('fancy')
         with self.assertRaises(ValueError) as m:
-            doks._auto_source()
+            doks._guess_source()
         expected = 'Too many possible Python files: foo.py, funny.py'
         assert m.exception.args[0] == expected
 
     @tdir('test_all.py', 'test_none.py', 'setup.py')
     def test_auto4(self):
         with self.assertRaises(ValueError) as m:
-            doks._auto_source()
+            doks._guess_source()
         assert m.exception.args[0] == 'No Python files to document'

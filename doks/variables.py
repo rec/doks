@@ -1,6 +1,7 @@
 import os
 import re
 import subprocess
+import sys
 
 ENV_PREFIX = 'DOKS_'
 DEFAULTS = {'vcstype': 'github'}
@@ -60,7 +61,7 @@ def substitute(variables, url):
 
     if missing_parts:
         parts = ', '.join(missing_parts)
-        print(variables)
+        print(variables, file=sys.stderr)
         raise ValueError('Missing variables %s in %s' % (parts, url))
 
     return '/'.join(new_parts)

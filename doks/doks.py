@@ -17,12 +17,13 @@ USAGE
     doks my_file.py [README.rst]
 
 """
+from . import from_command
+from . import from_file
 from . import rst
-from .from_command import from_command
-from .from_file import from_file
 from pathlib import Path
 import datetime
 import safer
+import sys
 
 README = 'README.rst'
 
@@ -38,11 +39,17 @@ def doks(
     window=None,
     verbose=False,
 ):
-    """Print documentation for a file or module
+    """
+    Write documentation for a file or module.
+    Returns True if `target` was written, and False if it was unchanged.
 
     ARGUMENTS
       source
         path to the Python file or module.
+
+      target
+        path to the output file or ``None``, in which case
+        output is printed to stdout
 
       auto
         If true, automatically guess both source and target files
@@ -53,13 +60,11 @@ def doks(
       force
         If true, write .rst documentation even if it is malformed
 
-      target
-        path to the output file or ``None``, in which case
-        output is printed to stdout
-
+      verbose
+        Emit more print messages
     """
     if auto:
-        source = source or _auto_source()
+        source = source or _guess_source()
         target = target or README
 
     elif not source:
@@ -68,7 +73,7 @@ def doks(
     if window is None:
         window = rst.ERROR_WINDOW
 
-    reader = from_command if command else from_file
+    reader = from_command.from_command if command else from_file.from_file
     lines = list(reader(source))
     if lines and lines[-1]:
         lines.append('')
@@ -83,19 +88,19 @@ def doks(
         return True
 
     p = Path(target)
+    written = 'rewritten' if p.exists() else 'written'
     if p.exists() and p.read_text().splitlines()[:-1] == lines[:-1]:
-        print(f'{target} unchanged')
-        return
+        print(f'{target} unchanged', file=sys.stderr)
+        return False
 
     with safer.writer(target) as fp:
         fp.write(body)
 
-    written = 'rewritten' if p.exists() else 'written'
-    print(f'{target} {written}')
+    print(f'{target} {written})', file=sys.stderr)
     return True
 
 
-def _auto_source():
+def _guess_source():
     eponymous = Path(Path().absolute().stem + '.py')
     if eponymous.exists():
         return eponymous
