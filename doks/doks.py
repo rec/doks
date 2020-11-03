@@ -73,12 +73,16 @@ def doks(
     if window is None:
         window = rst.ERROR_WINDOW
 
-    reader = from_command.from_command if command else from_file.from_file
-    lines = list(reader(source))
+    if command:
+        lines = from_command.from_command(source)
+    else:
+        lines = from_file.from_file(source)
+    lines = list(lines)
+
     if lines and lines[-1]:
         lines.append('')
-
     lines.append(_DOKS_MSG % _timestamp())
+
     body = '\n'.join(lines) + '\n'
     if not (rst.render(body, window) or force):
         raise ValueError(f'The .rst code in {source} is malformed')
