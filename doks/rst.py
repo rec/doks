@@ -61,12 +61,14 @@ def describe(path, value, sections, is_member):
     if not (doc and hasattr(value, '__doc__')):
         return
 
+    section = sections[2 + is_member]
     if isinstance(value, type):
         line = f'Class ``{path}``'
+        yield from header(line, section)
     else:
         sig = inspect.signature(value)
         line = f'``{path}{sig}``'
-    yield from header(line, sections[2 + is_member])
+        yield from header(line, section)
 
     yield code(value)
     yield ''

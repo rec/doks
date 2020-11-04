@@ -7,7 +7,7 @@ import inspect
 def from_file(path):
     m = impall.import_file(str(path))
     module = getattr(m, '_xmod_wrapped', m)
-    original = module is not m and m._xmod_extension
+    extends = module is not m and m._xmod_extension
 
     module_doc = inspect.getdoc(module) or ''
 
@@ -22,10 +22,12 @@ def from_file(path):
     if not items:
         raise ValueError('No items in module')
 
+    if extends:
+        yield from rst.describe(path.with_suffix(''), extends, sections, False)
+
     for vpath, value, is_member in _children(module, items, module.__name__):
-        if value is original:
-            vpath = str(path)  # WRONG - why did I write this?
-        yield from rst.describe(vpath, value, sections, is_member)
+        if value is not extends:
+            yield from rst.describe(vpath, value, sections, is_member)
 
 
 def _children(parent, names, module_path, is_member=False):
