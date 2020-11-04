@@ -67,7 +67,7 @@ def _from_command(name, lines):
     usage[0] = ' ' * len(USAGE) + usage[0][len(USAGE) :]
 
     yield from _header('Usage')
-    yield from ('.. code-block:: bash', '')
+    yield from rst.code_block('bash')
     yield from usage
 
     yield from _header('Description')

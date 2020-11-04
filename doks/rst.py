@@ -20,6 +20,7 @@ _GIT_SUFFIX = '.git'
 _SSH_PREFIX = 'git@'
 _HTTPS_PREFIX = 'https://'
 ERROR_WINDOW = 10
+MAX_SIGNATURE = 80
 
 
 def render(text, window=ERROR_WINDOW):
@@ -61,14 +62,7 @@ def describe(path, value, sections, is_member):
     if not (doc and hasattr(value, '__doc__')):
         return
 
-    section = sections[2 + is_member]
-    if isinstance(value, type):
-        line = f'Class ``{path}``'
-        yield from header(line, section)
-    else:
-        sig = inspect.signature(value)
-        line = f'``{path}{sig}``'
-        yield from header(line, section)
+    yield from _signature(path, value, sections[2 + is_member])
 
     yield code(value)
     yield ''
@@ -77,8 +71,32 @@ def describe(path, value, sections, is_member):
     yield ''
 
 
+def _signature(path, value, section):
+    if isinstance(value, type):
+        line = f'Class ``{path}``'
+        yield from header(line, section)
+        return
+
+    sig = inspect.signature(value)
+    line = f'``{path}{sig}``'
+
+    if len(line) <= MAX_SIGNATURE:
+        yield from header(line, section)
+    else:
+        yield from header(f'``{path}()``', section)
+        yield from code_block('python')
+        yield f'  {path}('
+        for p in sig.parameters.values():
+            yield f'       {p},'
+        yield from ('  )', '')
+
+
 def header(line, char):
     yield from (line, char * len(line), '')
+
+
+def code_block(lang):
+    return f'.. code-block:: {lang}', ''
 
 
 def code(value):
