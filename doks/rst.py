@@ -51,18 +51,30 @@ def render(text, window=ERROR_WINDOW):
 
 
 def describe(path, value, sections, is_member):
+    section = sections[2 + is_member]
     if isinstance(value, functools.partial):
-        yield from header(path, sections[2 + is_member])
-        _, args = str(value).split('>', maxsplit=1)
-        name = value.func.__name__
-        yield f'A partial function ``functools.partial({name}{args})``'
-        return
+        yield from _describe_partial(path, value, section)
+    else:
+        yield from _describe(path, value, section)
 
+
+def _describe_partial(path, value, section):
+    yield from header(path, section)
+    yield from ('A partial function:', '')
+    yield from code_block('python')
+    yield '  functools.partial('
+    yield f'      <function {value.func.__name__}>,'
+    yield from (f'      {a!r},' for a in value.args)
+    yield from (f'      {k}={v!r},' for k, v in value.keywords.items())
+    yield from ('  )', '')
+
+
+def _describe(path, value, section):
     doc = inspect.getdoc(value)
     if not (doc and hasattr(value, '__doc__')):
         return
 
-    yield from _signature(path, value, sections[2 + is_member])
+    yield from _signature(path, value, section)
 
     yield code(value)
     yield ''

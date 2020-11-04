@@ -41,7 +41,7 @@ def main():
         doks.doks(**project)
     except Exception as e:
         print(e, file=sys.stderr)
-        if args.verbose:
+        if args.get('verbose'):
             traceback.print_exc()
         sys.exit(-1)
 
