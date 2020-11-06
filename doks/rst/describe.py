@@ -24,7 +24,6 @@ def describe(path, value, sections, is_member, doks):
 
     def describe_dok(dok):
         yield from signature()
-        yield ''
         yield dok
         yield ''
 

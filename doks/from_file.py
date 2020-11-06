@@ -29,10 +29,7 @@ def from_file(path):
         yield from describe.describe(d, extends, sections, False, doks)
 
     for vpath, value, is_member in _children(module, items, module.__name__):
-        if value is not extends:
-            yield from describe.describe(
-                vpath, value, sections, is_member, doks
-            )
+        yield from describe.describe(vpath, value, sections, is_member, doks)
 
 
 def _children(parent, names, module_path, is_member=False):
