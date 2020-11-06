@@ -1,7 +1,8 @@
-from . import ERROR_WINDOW
 from readme_renderer import rst
 import io
 import sys
+
+ERROR_WINDOW = 10
 
 
 def render(text, window=ERROR_WINDOW):

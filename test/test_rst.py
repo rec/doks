@@ -1,4 +1,4 @@
-from doks import rst
+from doks.rst import rst
 from unittest import TestCase
 
 

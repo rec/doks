@@ -1,4 +1,4 @@
-from . import rst
+from .rst import rst
 from pathlib import Path
 import re
 import subprocess

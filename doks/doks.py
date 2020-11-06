@@ -19,7 +19,6 @@ USAGE
 """
 from . import from_command
 from . import from_file
-from . import rst
 from .rst import render
 from pathlib import Path
 import datetime
@@ -72,7 +71,7 @@ def doks(
         raise ValueError('Source must be set if --auto/-a is not used')
 
     if window is None:
-        window = rst.ERROR_WINDOW
+        window = render.ERROR_WINDOW
 
     if command:
         lines = from_command.from_command(source)

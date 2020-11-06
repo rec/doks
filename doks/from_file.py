@@ -1,6 +1,6 @@
-from . import rst
 from . import shields
 from .rst import describe
+from .rst import rst
 import impall
 import inspect
 
