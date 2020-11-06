@@ -20,6 +20,7 @@ USAGE
 from . import from_command
 from . import from_file
 from . import rst
+from .rst import render
 from pathlib import Path
 import datetime
 import safer
@@ -84,7 +85,7 @@ def doks(
     lines.append(_DOKS_MSG % _timestamp())
 
     body = '\n'.join(lines) + '\n'
-    if not (rst.render(body, window) or force):
+    if not (render.render(body, window) or force):
         raise ValueError(f'The .rst code in {source} is malformed')
 
     if not target:
