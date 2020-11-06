@@ -31,7 +31,7 @@ def _describe(path, value, section):
 
     yield from _signature(path, value, section)
 
-    yield code(value)
+    yield code.code(value)
     yield ''
 
     yield from doc.splitlines()
