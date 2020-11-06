@@ -7,8 +7,6 @@ import io
 import os
 import sys
 
-USE_INDENT = False
-
 MSG = '`{msg} <https://{host}/{user}/{project}/{sep}/{file}#L{begin}-L{end}>`_'
 SEPARATORS = {
     'github.com': 'blob/master',
@@ -79,7 +77,7 @@ def _describe(path, value, section):
     yield code(value)
     yield ''
 
-    yield from indent(doc)
+    yield from doc.splitlines()
     yield ''
 
 
@@ -144,14 +142,6 @@ def section_characters(lines):
         pline = line
 
     return ''.join((sections, *(s for s in SECTIONS if s not in sections)))
-
-
-def indent(s):
-    for line in s.splitlines():
-        if USE_INDENT:
-            yield '    ' + line if line.strip() else line
-        else:
-            yield line
 
 
 def _remote():
