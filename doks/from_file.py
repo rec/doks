@@ -1,5 +1,6 @@
 from . import rst
 from . import shields
+from .rst import describe
 import impall
 import inspect
 
@@ -25,11 +26,13 @@ def from_file(path):
 
     if extends:
         d = path.with_suffix('')
-        yield from rst.describe(d, extends, sections, False, doks)
+        yield from describe.describe(d, extends, sections, False, doks)
 
     for vpath, value, is_member in _children(module, items, module.__name__):
         if value is not extends:
-            yield from rst.describe(vpath, value, sections, is_member, doks)
+            yield from describe.describe(
+                vpath, value, sections, is_member, doks
+            )
 
 
 def _children(parent, names, module_path, is_member=False):
