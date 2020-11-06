@@ -50,7 +50,7 @@ def render(text, window=ERROR_WINDOW):
             print(symbol, fmt % (i + 1), line, file=sys.stderr)
 
 
-def describe(path, value, sections, is_member):
+def describe(path, value, sections, is_member, doks):
     section = sections[2 + is_member]
     if isinstance(value, functools.partial):
         yield from _describe_partial(path, value, section)
