@@ -1,3 +1,26 @@
+## v0.11.0 - 20/11/15
+
+* Add . to PYTHONPATH in from_command
+* Add doks settings to pyproject.toml
+* Improve output slightly
+* Add describe_doks for custom help messages
+* Move rst to its own subdirectory
+* Read _DOKS from the main module
+* Better description of partials
+* Indent function signatures that are too long
+* Use shortened name for xmod modules
+* Print to sys.stderr consistently
+* Read doks arguments from pyproject.toml
+* Handle partial functions better
+* New --force argument
+* Handle default targets better
+* Add a Comments header for epilogs
+* Fix results for simp
+* Commit test for wrong results for simp
+* Rename some test files
+* from_command now expects strings only
+* from_files.py no longer knows about variables
+
 ## v0.10.3 - 20/10/07
 
 * Enable Python 3.9
