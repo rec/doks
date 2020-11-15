@@ -1,5 +1,6 @@
 from .rst import rst
 from pathlib import Path
+import os
 import re
 import subprocess
 
@@ -7,10 +8,11 @@ USAGE = 'usage: '
 
 
 def from_command(path):
+    env = dict(os.environ, PYTHONPATH=str(Path('.').absolute()))
     try:
-        output = subprocess.check_output((path, '-h'))
+        output = subprocess.check_output((path, '-h'), env=env)
     except Exception:
-        output = subprocess.check_output(('python', path, '-h'))
+        output = subprocess.check_output(('python', path, '-h'), env=env)
 
     lines = output.decode().splitlines()
     yield from _from_command(Path(path).name, lines)
