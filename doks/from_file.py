@@ -11,7 +11,7 @@ def from_file(path):
     module = getattr(m, '_xmod_wrapped', m)
     extends = module is not m and m._xmod_extension
 
-    module_doc = inspect.getdoc(module) or ''
+    module_doc = rst.fix_ticks(inspect.getdoc(module) or '')
 
     lines = module_doc.splitlines()
     sections = rst.section_characters(lines)

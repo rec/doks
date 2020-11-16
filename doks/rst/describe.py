@@ -47,7 +47,7 @@ def describe(path, value, sections, is_member, doks):
         yield code.code(value)
         yield ''
 
-        yield from doc.splitlines()
+        yield from rst.fix_ticks(doc).splitlines()
         yield ''
 
     def signature():

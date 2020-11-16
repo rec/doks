@@ -10,13 +10,18 @@ def code_block(lang):
 
 
 def section_characters(lines):
-    sections = ''
+    sections = []
     pline = ''
     for line in lines:
-        if line and pline:
+        if pline and len(line) >= len(pline):
             s = line[0]
             if s in SECTIONS and s not in sections and len(set(line)) == 1:
-                sections += s
+                sections.append(s)
         pline = line
 
-    return ''.join((sections, *(s for s in SECTIONS if s not in sections)))
+    missing = [s for s in SECTIONS if s not in sections]
+    return ''.join(sections + missing)
+
+
+def fix_ticks(s):
+    return s.replace('`', '``').replace('````', '``')
