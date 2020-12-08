@@ -8,8 +8,13 @@ import inspect
 def from_file(path):
     m = impall.import_file(str(path))
     doks = getattr(m, '_DOKS', {})
-    module = getattr(m, '_xmod_wrapped', m)
-    extends = module is not m and m._xmod_extension
+    try:
+        module = m._xmod_wrapped
+    except AttributeError:
+        module = m
+        extends = None
+    else:
+        extends = m._xmod_extension
 
     module_doc = rst.fix_ticks(inspect.getdoc(module) or '')
 
@@ -29,7 +34,11 @@ def from_file(path):
         yield from describe.describe(d, extends, sections, False, doks)
 
     for vpath, value, is_member in _children(module, items, module.__name__):
-        yield from describe.describe(vpath, value, sections, is_member, doks)
+        if value is not extends:
+            print(value, extends)
+            yield from describe.describe(
+                vpath, value, sections, is_member, doks
+            )
 
 
 def _children(parent, names, module_path, is_member=False):
