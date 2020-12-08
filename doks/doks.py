@@ -100,7 +100,7 @@ def doks(
     with safer.writer(target) as fp:
         fp.write(body)
 
-    print(f'{target} {written})', file=sys.stderr)
+    print(f'{target} {written}', file=sys.stderr)
     return True
 
 
