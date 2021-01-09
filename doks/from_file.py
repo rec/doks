@@ -35,7 +35,6 @@ def from_file(path):
 
     for vpath, value, is_member in _children(module, items, module.__name__):
         if value is not extends:
-            print(value, extends)
             yield from describe.describe(
                 vpath, value, sections, is_member, doks
             )

@@ -1,3 +1,5 @@
+import re
+
 SECTIONS = '-=~_+*#`\':<>^"'
 
 
@@ -23,5 +25,14 @@ def section_characters(lines):
     return ''.join(sections + missing)
 
 
+LINK_RE = re.compile('``([^`]+? <.*?>)``_')
+
+
 def fix_ticks(s):
-    return s.replace('`', '``').replace('````', '``')
+    if not True:
+        return s
+
+    result = s.replace('`', '``').replace('````', '``')
+    if True:
+        return result
+    result = LINK_RE.sub(r'`\1`_', result)

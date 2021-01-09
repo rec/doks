@@ -48,7 +48,7 @@ def doks(
         path to the Python file or module.
 
       target
-        path to the output file or ``None``, in which case
+        path to the output file or `None`, in which case
         output is printed to stdout
 
       auto

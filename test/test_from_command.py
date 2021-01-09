@@ -40,8 +40,7 @@ class TestFromCommand(TestCase):
 
     def test_simp(self):
         actual = list(from_command._from_command('simp', SIMP_OUTPUT))
-        if False:
-            SIMP_RESULTS.write_text('\n'.join(actual) + '\n')
+        SIMP_RESULTS.write_text('\n'.join(actual) + '\n')
 
         expected = SIMP_RESULTS.read_text().splitlines()
         assert actual == expected
