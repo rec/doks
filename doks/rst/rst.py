@@ -29,10 +29,7 @@ LINK_RE = re.compile('``([^`]+? <.*?>)``_')
 
 
 def fix_ticks(s):
-    if not True:
-        return s
-
     result = s.replace('`', '``').replace('````', '``')
-    if True:
+    if not True:
         return result
-    result = LINK_RE.sub(r'`\1`_', result)
+    return LINK_RE.sub(r'`\1`_', result)
