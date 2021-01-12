@@ -1,3 +1,7 @@
+## v1.0.1 - 21/01/12
+
+* Handle __init__.py files better
+
 ## v1.0.0 - 21/01/11
 
 * First release
