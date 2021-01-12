@@ -41,6 +41,7 @@ def from_file(path):
 
 
 def _children(parent, names, module_path, is_member=False):
+    module_path = module_path.replace('.__init__', '')
     for name in names:
         if not name.startswith('_') or name.startswith('__'):
             value = getattr(parent, name)
