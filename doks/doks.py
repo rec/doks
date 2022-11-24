@@ -64,7 +64,7 @@ def doks(
         Emit more print messages
     """
     if auto:
-        source = source or _guess_source()
+        source = Path(source or _guess_source())
         target = target or README
 
     elif not source:

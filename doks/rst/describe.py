@@ -3,7 +3,10 @@ from . import rst
 import functools
 import inspect
 
-MAX_SIGNATURE = 80
+MAX_SIGNATURE = 40
+GENERIC_TYPE_HELP = (
+    'Create and return a new object.  See help(type) for accurate signature.'
+)
 
 
 def describe(path, value, sections, is_member, doks):
@@ -38,8 +41,9 @@ def describe(path, value, sections, is_member, doks):
         yield from ('  )', '')
 
     def describe_function():
+        raw_doc = (getattr(value, '__doc__', '') or '').strip()
         doc = inspect.getdoc(value)
-        if not (doc and hasattr(value, '__doc__')):
+        if not (doc and raw_doc):
             return
 
         yield from signature()
@@ -57,7 +61,7 @@ def describe(path, value, sections, is_member, doks):
             return
 
         sig = inspect.signature(value)
-        line = f'``{path}{sig}``'
+        line = f'``{path}{sig}``'.replace(':', ': ')
 
         if len(line) <= MAX_SIGNATURE:
             yield from rst.header(line, section)
@@ -66,6 +70,8 @@ def describe(path, value, sections, is_member, doks):
             yield from rst.code_block('python')
             yield f'  {path}('
             for p in sig.parameters.values():
+                p = p.replace(default=doks.get(p.default, p.default))
+                p = str(p).replace(':', ': ')
                 yield f'       {p},'
             yield from ('  )', '')
 

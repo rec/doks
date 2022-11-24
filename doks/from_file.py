@@ -1,12 +1,22 @@
+from pathlib import Path
 from . import shields
-from .rst import describe
+from .rst.describe import describe
 from .rst import rst
 import impall
 import inspect
 
+INIT = '/__init__.py'
+
 
 def from_file(path):
-    m = impall.import_file(str(path))
+    if isinstance(path, Path):
+        p = str(path)
+    else:
+        p, path = path, Path(path)
+    if p.endswith(INIT):
+        p = p[:-len(INIT)]
+
+    m = impall.import_file(p)
     doks = getattr(m, '_DOKS', {})
     try:
         module = m._xmod_wrapped
@@ -31,13 +41,11 @@ def from_file(path):
 
     if extends:
         d = path.with_suffix('')
-        yield from describe.describe(d, extends, sections, False, doks)
+        yield from describe(d, extends, sections, False, doks)
 
     for vpath, value, is_member in _children(module, items, module.__name__):
         if value is not extends:
-            yield from describe.describe(
-                vpath, value, sections, is_member, doks
-            )
+            yield from describe(vpath, value, sections, is_member, doks)
 
 
 def _children(parent, names, module_path, is_member=False):
